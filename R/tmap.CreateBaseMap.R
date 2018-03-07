@@ -14,6 +14,8 @@
 #' @param strCRS - string representation of CRS (default = WGS84) used for ALL shapefiles
 #' @param boundingbox - a tmap-style bounding box
 #' @param colors.bathym - color for the bathymetry
+#' @param points.size - size of points, in map units
+#' @param verbose - flag to print debugging info
 #'
 #' @return - basemap layer based on the tmap package
 #'
@@ -22,13 +24,14 @@
 tmap.CreateBaseMap<-function( layer.land=NULL,
                               layer.bathym=NULL,
                               gisDir=NULL,
-                              shapeFile.land      =system.file("inst/Shapefiles/Land/Alaska.shp",package="wtsGIS"),
-                              shapeFile.bathymetry=system.file("inst/Shapefiles/Bathymetry/ShelfBathymetry.shp",package="wtsGIS"),
+                              shapeFile.land      =system.file("extdata/Shapefiles/Land/Alaska.shp",package="wtsGIS"),
+                              shapeFile.bathymetry=system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",package="wtsGIS"),
                               strCRS=tmaptools::get_proj4("longlat"),
                               boundingbox=list(bottomleft=list(lon=-179,lat=54),
                                                topright  =list(lon=-157,lat=62.5)),
                               colors.bathym="darkblue",
-                              points.size=0.01
+                              points.size=0.01,
+                              verbose=TRUE
                               ){
 
   land<-layer.land;
@@ -36,7 +39,8 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
     if (!is.null(shapeFile.land)){
       f<-shapeFile.land;
       if (!is.null(gisDir)) f<-file.path(gisDir,shapeFile.land);
-      land<-wtsUtilities::tmap.CreateLayerFromShapefile(f,strCRS=strCRS);
+      if (verbose) cat("reading land shapefile '",f,"'\n",sep="")
+      land<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS);
     }
   }
 
@@ -45,7 +49,8 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
     if (!is.null(shapeFile.bathymetry)){
       f<-shapeFile.bathymetry;
       if (!is.null(gisDir)) f<-file.path(gisDir,shapeFile.bathymetry);
-      bathym<-wtsUtilities::tmap.CreateLayerFromShapefile(file.path(gisDir,shapeFile.bathymetry),strCRS=strCRS);
+      if (verbose) cat("reading bathymetry shapefile '",f,"'\n",sep="")
+      bathym<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS);
     }
   }
 

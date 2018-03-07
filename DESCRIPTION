@@ -8,9 +8,17 @@ Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Contains functions, Rmd scripts, and datasets relating to GIS.
 License: MIT
 Requires:
-    wtsUtilities (>= 2018.02.08)
+    akima (>= 0.6-2)
+    raster (>= 2.6-7)
+    sp (>= 1.2-7)
     tmap (>= 1.10)
     tmaptools (>= 1.2-1)
+    wtsUtilities (>= 2018.03.07)
 Imports:
+    akima,
+    raster,
+    sp,
+    tmap,
+    tmaptools,
     wtsUtilities
 RoxygenNote: 6.0.1
