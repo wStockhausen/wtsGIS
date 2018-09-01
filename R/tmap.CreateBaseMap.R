@@ -57,10 +57,10 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
 
   #define bounding box for map extent
   bbext<-tmaptools::bb(land);#just to get a bounding box
-  bbext['x','min']<-boundingbox$bottomleft$lon;
-  bbext['y','min']<-boundingbox$bottomleft$lat;
-  bbext['x','max']<-boundingbox$topright$lon;
-  bbext['y','max']<-boundingbox$topright$lat;
+  bbext['xmin']<-boundingbox$bottomleft$lon;
+  bbext['ymin']<-boundingbox$bottomleft$lat;
+  bbext['xmax']<-boundingbox$topright$lon;
+  bbext['ymax']<-boundingbox$topright$lat;
 
   #basemap using CRS from strCRS
   basemap<-tmap::tm_shape(land,bbox=bbext,is.master=TRUE)+tmap::tm_fill();

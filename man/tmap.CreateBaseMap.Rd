@@ -4,9 +4,10 @@
 \alias{tmap.CreateBaseMap}
 \title{Create a basemap layer for maps based on the tmap package}
 \usage{
-tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL, gisDir = NULL,
-  shapeFile.land = system.file("extdata/Shapefiles/Land/Alaska.shp", package =
-  "wtsGIS"),
+tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
+  gisDir = NULL,
+  shapeFile.land = system.file("extdata/Shapefiles/Land/Alaska.shp",
+  package = "wtsGIS"),
   shapeFile.bathymetry = system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",
   package = "wtsGIS"), strCRS = tmaptools::get_proj4("longlat"),
   boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =

@@ -4,12 +4,16 @@
 \alias{tmap.CreateLayerFromShapefile}
 \title{Create a tmap layer from a shapefile}
 \usage{
-tmap.CreateLayerFromShapefile(file, strCRS = tmaptools::get_proj4("longlat"))
+tmap.CreateLayerFromShapefile(file,
+  strCRS = tmaptools::get_proj4("longlat", output = "character"),
+  as.sf = FALSE)
 }
 \arguments{
 \item{file}{- shapefile to read}
 
 \item{strCRS}{- string describing the final coordinate reference system (CRS)}
+
+\item{as.sf}{- flag to create shape as a simple feature}
 }
 \value{
 a map layer consistent with the tmap package

@@ -5,8 +5,8 @@
 \title{Create a raster from a dataframe and a bounding box}
 \usage{
 tmap.CreateRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
-  crs = sp::CRS(tmaptools::get_proj4("longlat")), linear = TRUE,
-  extrap = FALSE, duplicate = "error")
+  crs = sp::CRS(tmaptools::get_proj4("longlat", output = "character")),
+  linear = TRUE, extrap = FALSE, duplicate = "error")
 }
 \arguments{
 \item{dfr}{- spatial dataframe with data to rasterize}
@@ -18,6 +18,8 @@ tmap.CreateRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
 \item{nx}{- number of cells in y direction}
 
 \item{ny}{- number of cells in y direction}
+
+\item{crs}{object of sp::CRS class}
 }
 \value{
 - raster layer

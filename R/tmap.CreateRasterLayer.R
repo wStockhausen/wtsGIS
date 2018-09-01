@@ -10,6 +10,7 @@
 #' @param bbox - tmap-style bounding box
 #' @param nx - number of cells in y direction
 #' @param ny - number of cells in y direction
+#' @param crs object of sp::CRS class
 #'
 #' @return - raster layer
 #'
@@ -20,12 +21,12 @@ tmap.CreateRasterLayer<-function(dfr,
                             bbox,
                             nx=500,
                             ny=500,
-                            crs=sp::CRS(tmaptools::get_proj4("longlat")),
+                            crs=sp::CRS(tmaptools::get_proj4("longlat",output="character")),
                             linear=TRUE,
                             extrap=FALSE,
                             duplicate="error"){
-  xgs<-seq(bbox["x","min"],bbext["x","max"],length=500);
-  ygs<-seq(bbox["y","min"],bbext["y","max"],length=500);
+  xgs<-seq(bbox["xmin"],bbox["xmax"],length=500);
+  ygs<-seq(bbox["ymin"],bbox["ymax"],length=500);
   intp<-akima::interp(x=dfr,z=col,
                       xo=xgs,yo=ygs,nx=nx,ny=ny,
                       linear=linear,extrap=FALSE,duplicate="error");
