@@ -11,7 +11,7 @@
 #' @param gisDir - path to top level folder for shapefiles
 #' @param shapeFile.land - land shapefile (if layer.land is not provided)
 #' @param shapeFile.bathymetry - bathymetry shapefile (if layer.bathym is not provided)
-#' @param strCRS - string representation of CRS (default = WGS84) used for ALL shapefiles
+#' @param strCRS - string representation of final CRS (default = WGS84) used for ALL shapefiles
 #' @param boundingbox - a tmap-style bounding box
 #' @param colors.bathym - color for the bathymetry
 #' @param points.size - size of points, in map units

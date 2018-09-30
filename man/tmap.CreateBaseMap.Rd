@@ -9,10 +9,10 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
   shapeFile.land = system.file("extdata/Shapefiles/Land/Alaska.shp",
   package = "wtsGIS"),
   shapeFile.bathymetry = system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",
-  package = "wtsGIS"), strCRS = tmaptools::get_proj4("longlat"),
-  boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =
-  list(lon = -157, lat = 62.5)), colors.bathym = "darkblue",
-  points.size = 0.01, verbose = TRUE)
+  package = "wtsGIS"), strCRS = tmaptools::get_proj4("longlat", output =
+  "character"), boundingbox = list(bottomleft = list(lon = -179, lat =
+  54), topright = list(lon = -157, lat = 62.5)),
+  colors.bathym = "darkblue", points.size = 0.01, verbose = TRUE)
 }
 \arguments{
 \item{layer.land}{- a tmap layer representing land}
@@ -25,7 +25,7 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
 
 \item{shapeFile.bathymetry}{- bathymetry shapefile (if layer.bathym is not provided)}
 
-\item{strCRS}{- string representation of CRS (default = WGS84) used for ALL shapefiles}
+\item{strCRS}{- string representation of final CRS (default = WGS84) used for ALL shapefiles}
 
 \item{boundingbox}{- a tmap-style bounding box}
 

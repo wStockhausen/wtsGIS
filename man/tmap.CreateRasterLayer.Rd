@@ -5,7 +5,7 @@
 \title{Create a raster from a dataframe and a bounding box}
 \usage{
 tmap.CreateRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
-  crs = sp::CRS(tmaptools::get_proj4("longlat", output = "character")),
+  strCRS = tmaptools::get_proj4("longlat", output = "character"),
   linear = TRUE, extrap = FALSE, duplicate = "error")
 }
 \arguments{
@@ -19,7 +19,7 @@ tmap.CreateRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
 
 \item{ny}{- number of cells in y direction}
 
-\item{crs}{object of sp::CRS class}
+\item{strCRS}{- string representation of CRS in PROJ4 format (default yields long/lat in WGS84)}
 }
 \value{
 - raster layer

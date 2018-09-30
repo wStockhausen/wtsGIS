@@ -6,20 +6,22 @@
 \usage{
 tmap.CreateLayerFromShapefile(file,
   strCRS = tmaptools::get_proj4("longlat", output = "character"),
-  as.sf = FALSE)
+  as.sf = TRUE)
 }
 \arguments{
 \item{file}{- shapefile to read}
 
 \item{strCRS}{- string describing the final coordinate reference system (CRS)}
 
-\item{as.sf}{- flag to create shape as a simple feature}
+\item{as.sf}{- flag to create layer as simple features default is TRUE as of 2018.09.28)}
 }
 \value{
-a map layer consistent with the tmap package
+a spatial dataset consistent with the tmap package, either a
+simlpe features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 }
 \description{
-This function reads a shapefile and creates a tmap layer.
+This function reads a shapefile and creates a tmap layer, either as a
+simple features dataset (using package \code{sf}) or as an sp dataset (using package \code{sp}).
 }
 \details{
 None.

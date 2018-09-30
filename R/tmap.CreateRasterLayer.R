@@ -10,7 +10,7 @@
 #' @param bbox - tmap-style bounding box
 #' @param nx - number of cells in y direction
 #' @param ny - number of cells in y direction
-#' @param crs object of sp::CRS class
+#' @param strCRS - string representation of CRS in PROJ4 format (default yields long/lat in WGS84)
 #'
 #' @return - raster layer
 #'
@@ -21,7 +21,7 @@ tmap.CreateRasterLayer<-function(dfr,
                             bbox,
                             nx=500,
                             ny=500,
-                            crs=sp::CRS(tmaptools::get_proj4("longlat",output="character")),
+                            strCRS=tmaptools::get_proj4("longlat",output="character"),
                             linear=TRUE,
                             extrap=FALSE,
                             duplicate="error"){
@@ -34,7 +34,7 @@ tmap.CreateRasterLayer<-function(dfr,
     intp2<-as.data.frame(akima::interp2xyz(intp,data.frame=TRUE));
     coords<-as.matrix(intp2[,1:2]);
     intp<-sp::SpatialPixelsDataFrame(coords,intp2[,"z",drop=FALSE],
-                                     proj4string=crs)
+                                     proj4string=sp::CRS(strCRS))
   }
   rstr<-raster::raster(intp,values=TRUE);
   return(rstr);
