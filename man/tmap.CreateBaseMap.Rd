@@ -9,9 +9,10 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
   shapeFile.land = system.file("extdata/Shapefiles/Land/Alaska.shp",
   package = "wtsGIS"),
   shapeFile.bathymetry = system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",
-  package = "wtsGIS"), strCRS = tmaptools::get_proj4("longlat", output =
-  "character"), boundingbox = list(bottomleft = list(lon = -179, lat =
-  54), topright = list(lon = -157, lat = 62.5)),
+  package = "wtsGIS"), strCRS.orig = tmaptools::get_proj4("longlat",
+  output = "character"), strCRS.finl = tmaptools::get_proj4("longlat",
+  output = "character"), boundingbox = list(bottomleft = list(lon = -179,
+  lat = 54), topright = list(lon = -157, lat = 62.5)),
   colors.bathym = "darkblue", points.size = 0.01, verbose = TRUE)
 }
 \arguments{
@@ -25,7 +26,7 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
 
 \item{shapeFile.bathymetry}{- bathymetry shapefile (if layer.bathym is not provided)}
 
-\item{strCRS}{- string representation of final CRS (default = WGS84) used for ALL shapefiles}
+\item{strCRS.orig}{- string representation of original CRS (default = WGS84) used for ALL shapefiles}
 
 \item{boundingbox}{- a tmap-style bounding box}
 
@@ -34,6 +35,8 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
 \item{points.size}{- size of points, in map units}
 
 \item{verbose}{- flag to print debugging info}
+
+\item{strCRS.finl-}{string representation of final CRS (default = WGS84) used for the basemap}
 }
 \value{
 - basemap layer based on the tmap package
@@ -43,5 +46,6 @@ This function creates a basemap layer for maps based on the tmap package.
 }
 \details{
 The basemap contains a land layer (polygons) and a bathymetry layer (lines).
-Uses \code{wtsUtilities::tmap.CreateLayerFromShapefile}.
+Uses \code{wtsUtilities::tmap.CreateLayerFromShapefile}. If boundingbox is NULL, then the
+bounding box for the land layer is used as the bounding box for the basemap.
 }

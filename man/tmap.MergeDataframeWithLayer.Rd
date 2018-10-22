@@ -10,7 +10,7 @@ tmap.MergeDataframeWithLayer(dfr, geoms, dataID = "STATION_ID",
 \arguments{
 \item{dfr}{- dataframe to merge}
 
-\item{geoms}{- tmap geometry layer to merge with}
+\item{geoms}{- geometries to merge with}
 
 \item{dataID}{- name of id column in dataframe to join on}
 
@@ -21,7 +21,7 @@ tmap.MergeDataframeWithLayer(dfr, geoms, dataID = "STATION_ID",
 \item{duplicateGeoms}{- allow geoms to be duplicated (i.e., where multiple rows in dataframe maatch a single geom)}
 }
 \value{
-- merged tmap layer
+- merged spatial dataframe (based on sf or sp classes, depending on class of geoms)
 }
 \description{
 This function merges a dataset
