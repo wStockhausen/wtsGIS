@@ -1,7 +1,7 @@
 #'
 #' @title Merge a dataframe with a geometry layer
 #'
-#' @description This function merges a dataset with a geometry layer
+#' @description This function merges a dataset with a geometry layer.
 #'
 #' @details If geoms is an sf-like spatial dataset, the merge is conducted using \code{sf::left_join}; otherwise,
 #' it is conducted using \code{sp:merge}.
@@ -17,12 +17,12 @@
 #'
 #' @export
 #'
-tmap.MergeDataframeWithLayer<-function(dfr,
-                                       geoms,
-                                       dataID="STATION_ID",
-                                       geomsID="GIS_STATION",
-                                       allData=FALSE,
-                                       duplicateGeoms=TRUE){
+mergeDataframeWithLayer<-function(dfr,
+                                   geoms,
+                                   dataID="STATION_ID",
+                                   geomsID="GIS_STATION",
+                                   allData=FALSE,
+                                   duplicateGeoms=TRUE){
   #join annual dfr to geoms by matching ID values
   if (inherits(geoms,c("sf","sfc","sfg"))){
     # str<-paste("geoms are simple features of class",class(geoms),"\n");

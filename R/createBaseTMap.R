@@ -4,7 +4,8 @@
 #' @description This function creates a basemap layer for maps based on the tmap package.
 #'
 #' @details The basemap contains a land layer (polygons) and a bathymetry layer (lines).
-#' Uses \code{wtsUtilities::tmap.CreateLayerFromShapefile}. If boundingbox is NULL, then the
+#' Uses \code{getPackagedLayer} or \code{wtsUtilities::createLayerFromShapefile} to create the
+#' land and bathymetric layers. If boundingbox is NULL, then the
 #' bounding box for the land layer is used as the bounding box for the basemap.
 #'
 #' @param layer.land - a tmap layer representing land
@@ -17,7 +18,6 @@
 #' @param boundingbox - a tmap-style bounding box
 #' @param colors.bathym - color for the bathymetry
 #' @param points.size - size of points, in map units
-#' @param verbose - flag to print debugging info
 #'
 #' @return - basemap layer based on the tmap package
 #'
@@ -25,7 +25,7 @@
 #'
 #' @export
 #'
-tmap.CreateBaseMap<-function( layer.land=NULL,
+createBaseTMap<-function( layer.land=NULL,
                               layer.bathym=NULL,
                               gisPath=NULL,
                               shapeFile.land      =NULL,
@@ -35,8 +35,7 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
                               boundingbox=list(bottomleft=list(lon=-179,lat=54),
                                                topright  =list(lon=-157,lat=62.5)),
                               colors.bathym="darkblue",
-                              points.size=0.01,
-                              verbose=TRUE
+                              points.size=0.01
                               ){
 
   land<-layer.land;
@@ -45,10 +44,10 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
       f<-shapeFile.land;
       if (!is.null(gisPath)) f<-file.path(gisPath,shapeFile.land);
       message(paste0("reading land shapefile '",f,"'"));
-      land<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS.orig);
+      land<-createLayerFromShapefile(f,strCRS=strCRS.orig);
     } else {
       #--use default
-      land<-tmap.getPackagedLayer("Alaska");
+      land<-getPackagedLayer("Alaska");
     }
   }
   if (!is.null(strCRS.finl))
@@ -60,9 +59,9 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
       f<-shapeFile.bathymetry;
       if (!is.null(gisPath)) f<-file.path(gisPath,shapeFile.bathymetry);
       if (verbose) cat("reading bathymetry shapefile '",f,"'\n",sep="")
-      bathym<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS.orig);
+      bathym<-createLayerFromShapefile(f,strCRS=strCRS.orig);
     } else {
-      bathym<-tmap.getPackagedLayer("ShelfBathymetry");
+      bathym<-getPackagedLayer("ShelfBathymetry");
     }
   }
   if (!is.null(strCRS.finl))

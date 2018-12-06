@@ -1,9 +1,9 @@
 #'
-#' @title Create a raster from a dataframe and a bounding box
+#' @title Create a spatial raster layer from a dataframe and a bounding box
 #'
-#' @description This function creates a raster from a dataframe and a bounding box
+#' @description This function creates a spatial raster layer from a dataframe and a bounding box
 #'
-#' @details Uses akima::interp(), sp::SpatialPixelsDataFrame(), and raster::raster().
+#' @details Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.
 #'
 #' @param dfr - spatial dataframe with data to rasterize
 #' @param col - name of column in dataframe to rasterize
@@ -16,7 +16,7 @@
 #'
 #' @export
 #'
-tmap.CreateRasterLayer<-function(dfr,
+createRasterLayer<-function(dfr,
                             col,
                             bbox,
                             nx=500,

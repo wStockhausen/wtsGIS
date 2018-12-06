@@ -1,7 +1,7 @@
 #'
-#' @title Create a tmap layer from a shapefile
+#' @title Create a spatial layer (an sf or sp object) from a shapefile
 #'
-#' @description This function reads a shapefile and creates a tmap layer, either as a
+#' @description This function reads a shapefile and creates a spatial layer, either as a
 #' simple features dataset (using package \code{sf}) or as an sp dataset (using package \code{sp}).
 #'
 #' @param file - shapefile to read
@@ -11,11 +11,12 @@
 #' @return a spatial dataset consistent with the tmap package, either a
 #' simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 #'
-#' @details None.
+#' @details Uses \code{tmaptools::read_shape} to read the shapefile. Uses \code{sf::st_transform} of \code{sp::spTransform} to
+#' convert the layer to the output CRS.
 #'
 #' @export
 #'
-tmap.CreateLayerFromShapefile<-function(file,
+createLayerFromShapefile<-function(file,
                                         strCRS=tmaptools::get_proj4("longlat",output="character"),
                                         as.sf=TRUE){
     if (!file.exists(file)) {

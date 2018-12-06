@@ -17,7 +17,7 @@ gClip(shp, bb, verbosity = 0)
 - spatial dataframe of clipped polygons
 }
 \description{
-Function to clip a set of polygons using a bounding box
+Function to clip a set of polygons using a bounding box.
 }
 \details{
 The bounding box can be one of the following (see extent{raster}):\cr
@@ -26,5 +26,6 @@ The bounding box can be one of the following (see extent{raster}):\cr
 3. matrix with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 4. dataframe with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 \cr
-Also, the bounding box must be in the same coordinate system as th set of polygons.
+Also, the bounding box must be in the same coordinate system as the set of polygons.\cr
+Uses \code{raster::extent}, \code{sp::proj4string}, and \code{rgeos::gIntersection}.
 }

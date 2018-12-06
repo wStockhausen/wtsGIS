@@ -1,7 +1,7 @@
 #'
 #'@title Clip a set of polygons using a bounding box
 #'
-#'@description Function to clip a set of polygons using a bounding box
+#'@description Function to clip a set of polygons using a bounding box.
 #'
 #'@param shp - set of polygons (from call to readOGR)
 #'@param bb  - bounding box (see details)
@@ -15,13 +15,12 @@
 #' 3. matrix with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 #' 4. dataframe with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 #' \cr
-#' Also, the bounding box must be in the same coordinate system as th set of polygons.
+#' Also, the bounding box must be in the same coordinate system as the set of polygons.\cr
+#' Uses \code{raster::extent}, \code{sp::proj4string}, and \code{rgeos::gIntersection}.
 #'
 #' @export
 #'
 gClip <- function(shp, bb,verbosity=0){
-#    require('raster')
-#    require('rgeos')
     if (verbosity>0) print(bb);
     bp<-bb;
     if (class(bp)=="data.frame"){

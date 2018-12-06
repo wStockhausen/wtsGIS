@@ -1,7 +1,7 @@
 #'
-#' @title Get a layer stored with the package
+#' @title Get a spatial layer stored with this package
 #'
-#' @description Function to get a layer stored with this package.
+#' @description Function to get a spatial layer stored with this package.
 #'
 #' @param layerName - name of layer to pull out
 #' @param as.sf - TRUE/FALSE to return dataset as an sf or sp type
@@ -24,7 +24,7 @@
 #'
 #' @export
 #'
-tmap.getPackagedLayer<-function(layerName,
+getPackagedLayer<-function(layerName,
                               as.sf=TRUE){
   org<-options(stringsAsFactors=FALSE);
   on.exit(options(stringsAsFactors=org));
@@ -49,8 +49,8 @@ tmap.getPackagedLayer<-function(layerName,
   message(paste0("selected shape file name = '",shpFile,"'"));
   fn<-system.file(file.path("extdata/Shapefiles",shpFile),package="wtsGIS");
   message(paste0("Creating dataset from '",fn,"'"));
-  shp<-tmap.CreateLayerFromShapefile(fn,
-                                     strCRS=NULL,
-                                     as.sf=as.sf);
+  shp<-createLayerFromShapefile(fn,
+                                strCRS=NULL,
+                                as.sf=as.sf);
   return(shp);
 }
