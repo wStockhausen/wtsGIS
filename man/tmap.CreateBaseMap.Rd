@@ -5,12 +5,8 @@
 \title{Create a basemap layer for maps based on the tmap package}
 \usage{
 tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
-  gisDir = NULL,
-  shapeFile.land = system.file("extdata/Shapefiles/Land/Alaska.shp",
-  package = "wtsGIS"),
-  shapeFile.bathymetry = system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",
-  package = "wtsGIS"), strCRS.orig = tmaptools::get_proj4("longlat",
-  output = "character"), strCRS.finl = tmaptools::get_proj4("longlat",
+  gisPath = NULL, shapeFile.land = NULL, shapeFile.bathymetry = NULL,
+  strCRS.orig = NULL, strCRS.finl = tmaptools::get_proj4("longlat",
   output = "character"), boundingbox = list(bottomleft = list(lon = -179,
   lat = 54), topright = list(lon = -157, lat = 62.5)),
   colors.bathym = "darkblue", points.size = 0.01, verbose = TRUE)
@@ -20,7 +16,7 @@ tmap.CreateBaseMap(layer.land = NULL, layer.bathym = NULL,
 
 \item{layer.bathym}{- a tmap layer representing bathymetry}
 
-\item{gisDir}{- path to top level folder for shapefiles}
+\item{gisPath}{- path to top level folder for shapefiles}
 
 \item{shapeFile.land}{- land shapefile (if layer.land is not provided)}
 

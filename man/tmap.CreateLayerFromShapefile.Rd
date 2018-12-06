@@ -11,13 +11,13 @@ tmap.CreateLayerFromShapefile(file,
 \arguments{
 \item{file}{- shapefile to read}
 
-\item{strCRS}{- string describing the final coordinate reference system (CRS)}
+\item{strCRS}{- string describing the output coordinate reference system (CRS) [or NULL to use the original]}
 
 \item{as.sf}{- flag to create layer as simple features default is TRUE as of 2018.09.28)}
 }
 \value{
 a spatial dataset consistent with the tmap package, either a
-simlpe features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
+simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 }
 \description{
 This function reads a shapefile and creates a tmap layer, either as a

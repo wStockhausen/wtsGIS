@@ -24,8 +24,9 @@ tmap.MergeDataframeWithLayer(dfr, geoms, dataID = "STATION_ID",
 - merged spatial dataframe (based on sf or sp classes, depending on class of geoms)
 }
 \description{
-This function merges a dataset
+This function merges a dataset with a geometry layer
 }
 \details{
-
+If geoms is an sf-like spatial dataset, the merge is conducted using \code{sf::left_join}; otherwise,
+it is conducted using \code{sp:merge}.
 }

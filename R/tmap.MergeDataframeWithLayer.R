@@ -1,9 +1,10 @@
 #'
 #' @title Merge a dataframe with a geometry layer
 #'
-#' @description This function merges a dataset
+#' @description This function merges a dataset with a geometry layer
 #'
-#' @details
+#' @details If geoms is an sf-like spatial dataset, the merge is conducted using \code{sf::left_join}; otherwise,
+#' it is conducted using \code{sp:merge}.
 #'
 #' @param dfr - dataframe to merge
 #' @param geoms - geometries to merge with

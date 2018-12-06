@@ -9,7 +9,7 @@
 #'
 #' @param layer.land - a tmap layer representing land
 #' @param layer.bathym - a tmap layer representing bathymetry
-#' @param gisDir - path to top level folder for shapefiles
+#' @param gisPath - path to top level folder for shapefiles
 #' @param shapeFile.land - land shapefile (if layer.land is not provided)
 #' @param shapeFile.bathymetry - bathymetry shapefile (if layer.bathym is not provided)
 #' @param strCRS.orig - string representation of original CRS (default = WGS84) used for ALL shapefiles
@@ -27,10 +27,10 @@
 #'
 tmap.CreateBaseMap<-function( layer.land=NULL,
                               layer.bathym=NULL,
-                              gisDir=NULL,
-                              shapeFile.land      =system.file("extdata/Shapefiles/Land/Alaska.shp",package="wtsGIS"),
-                              shapeFile.bathymetry=system.file("extdata/Shapefiles/Bathymetry/ShelfBathymetry.shp",package="wtsGIS"),
-                              strCRS.orig=tmaptools::get_proj4("longlat",output="character"),
+                              gisPath=NULL,
+                              shapeFile.land      =NULL,
+                              shapeFile.bathymetry=NULL,
+                              strCRS.orig=NULL,
                               strCRS.finl=tmaptools::get_proj4("longlat",output="character"),
                               boundingbox=list(bottomleft=list(lon=-179,lat=54),
                                                topright  =list(lon=-157,lat=62.5)),
@@ -43,25 +43,30 @@ tmap.CreateBaseMap<-function( layer.land=NULL,
   if (is.null(land)){
     if (!is.null(shapeFile.land)){
       f<-shapeFile.land;
-      if (!is.null(gisDir)) f<-file.path(gisDir,shapeFile.land);
-      if (verbose) cat("reading land shapefile '",f,"'\n",sep="")
+      if (!is.null(gisPath)) f<-file.path(gisPath,shapeFile.land);
+      message(paste0("reading land shapefile '",f,"'"));
       land<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS.orig);
-      if (!is.null(strCRS.finl)&&(strCRS.finl!=strCRS.orig))
-        land <- land %>% tmaptools::set_projection(projection=strCRS.finl);
+    } else {
+      #--use default
+      land<-tmap.getPackagedLayer("Alaska");
     }
   }
+  if (!is.null(strCRS.finl))
+    land <- land %>% tmaptools::set_projection(projection=strCRS.finl);
 
   bathym<-layer.bathym;
   if (is.null(bathym)){
     if (!is.null(shapeFile.bathymetry)){
       f<-shapeFile.bathymetry;
-      if (!is.null(gisDir)) f<-file.path(gisDir,shapeFile.bathymetry);
+      if (!is.null(gisPath)) f<-file.path(gisPath,shapeFile.bathymetry);
       if (verbose) cat("reading bathymetry shapefile '",f,"'\n",sep="")
       bathym<-tmap.CreateLayerFromShapefile(f,strCRS=strCRS.orig);
-      if (!is.null(strCRS.finl)&&(strCRS.finl!=strCRS.orig))
-        bathym <- bathym %>% tmaptools::set_projection(projection=strCRS.finl);
+    } else {
+      bathym<-tmap.getPackagedLayer("ShelfBathymetry");
     }
   }
+  if (!is.null(strCRS.finl))
+    bathym <- bathym %>% tmaptools::set_projection(projection=strCRS.finl);
 
 
   #define bounding box for map extent

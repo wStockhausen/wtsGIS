@@ -5,11 +5,11 @@
 #' simple features dataset (using package \code{sf}) or as an sp dataset (using package \code{sp}).
 #'
 #' @param file - shapefile to read
-#' @param strCRS - string describing the final coordinate reference system (CRS)
+#' @param strCRS - string describing the output coordinate reference system (CRS) [or NULL to use the original]
 #' @param as.sf - flag to create layer as simple features default is TRUE as of 2018.09.28)
 #'
 #' @return a spatial dataset consistent with the tmap package, either a
-#' simlpe features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
+#' simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 #'
 #' @details None.
 #'
@@ -18,11 +18,21 @@
 tmap.CreateLayerFromShapefile<-function(file,
                                         strCRS=tmaptools::get_proj4("longlat",output="character"),
                                         as.sf=TRUE){
+    if (!file.exists(file)) {
+        warning(paste0("Shapefile '",file,"' could not be found. Returning NULL."),immediate.=TRUE);
+        return(NULL);
+    }
     layer<-tmaptools::read_shape(file=file,stringsAsFactors=FALSE,as.sf=as.sf);
-    if (as.sf){
-      layer<-layer %>% sf::st_transform(strCRS);
-    } else {
-      layer<-sp::spTransform(layer,strCRS);#convert CRS to strCRS
+    if (is.null(layer)) {
+        warning(paste0("Shapefile '",file,"' could not be read. Returning NULL."),immediate.=TRUE);
+        return(NULL);
+    }
+    if (!is.null(strCRS)){
+      if (as.sf){
+        layer<-layer %>% sf::st_transform(strCRS);
+      } else {
+        layer<-sp::spTransform(layer,strCRS);#convert CRS to strCRS
+      }
     }
     return(layer);
 }
