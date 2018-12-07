@@ -6,10 +6,10 @@
 \usage{
 createBaseTMap(layer.land = NULL, layer.bathym = NULL,
   gisPath = NULL, shapeFile.land = NULL, shapeFile.bathymetry = NULL,
-  strCRS.orig = NULL, strCRS.finl = tmaptools::get_proj4("longlat",
-  output = "character"), boundingbox = list(bottomleft = list(lon = -179,
-  lat = 54), topright = list(lon = -157, lat = 62.5)),
-  colors.bathym = "darkblue", points.size = 0.01)
+  strCRS.orig = NULL, strCRS.finl = getCRS("WGS84"),
+  boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =
+  list(lon = -157, lat = 62.5)), colors.bathym = "darkblue",
+  points.size = 0.01)
 }
 \arguments{
 \item{layer.land}{- a tmap layer representing land}
@@ -24,13 +24,13 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
 
 \item{strCRS.orig}{- string representation of original CRS (default = WGS84) used for ALL shapefiles}
 
+\item{strCRS.finl}{- string representation of final CRS (default = WGS84) used for the basemap}
+
 \item{boundingbox}{- a tmap-style bounding box}
 
 \item{colors.bathym}{- color for the bathymetry}
 
 \item{points.size}{- size of points, in map units}
-
-\item{strCRS.finl-}{string representation of final CRS (default = WGS84) used for the basemap}
 }
 \value{
 - basemap layer based on the tmap package

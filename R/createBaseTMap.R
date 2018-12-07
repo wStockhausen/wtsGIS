@@ -14,7 +14,7 @@
 #' @param shapeFile.land - land shapefile (if layer.land is not provided)
 #' @param shapeFile.bathymetry - bathymetry shapefile (if layer.bathym is not provided)
 #' @param strCRS.orig - string representation of original CRS (default = WGS84) used for ALL shapefiles
-#' @param strCRS.finl- string representation of final CRS (default = WGS84) used for the basemap
+#' @param strCRS.finl - string representation of final CRS (default = WGS84) used for the basemap
 #' @param boundingbox - a tmap-style bounding box
 #' @param colors.bathym - color for the bathymetry
 #' @param points.size - size of points, in map units
@@ -31,7 +31,7 @@ createBaseTMap<-function( layer.land=NULL,
                               shapeFile.land      =NULL,
                               shapeFile.bathymetry=NULL,
                               strCRS.orig=NULL,
-                              strCRS.finl=tmaptools::get_proj4("longlat",output="character"),
+                              strCRS.finl=getCRS("WGS84"),
                               boundingbox=list(bottomleft=list(lon=-179,lat=54),
                                                topright  =list(lon=-157,lat=62.5)),
                               colors.bathym="darkblue",
@@ -50,22 +50,20 @@ createBaseTMap<-function( layer.land=NULL,
       land<-getPackagedLayer("Alaska");
     }
   }
-  if (!is.null(strCRS.finl))
-    land <- land %>% tmaptools::set_projection(projection=strCRS.finl);
+  if (!is.null(strCRS.finl)) land <- wtsGIS::transformCRS(land,strCRS.finl);
 
   bathym<-layer.bathym;
   if (is.null(bathym)){
     if (!is.null(shapeFile.bathymetry)){
       f<-shapeFile.bathymetry;
       if (!is.null(gisPath)) f<-file.path(gisPath,shapeFile.bathymetry);
-      if (verbose) cat("reading bathymetry shapefile '",f,"'\n",sep="")
+      message(paste0("reading bathymetry shapefile '",f,"'"));
       bathym<-createLayerFromShapefile(f,strCRS=strCRS.orig);
     } else {
       bathym<-getPackagedLayer("ShelfBathymetry");
     }
   }
-  if (!is.null(strCRS.finl))
-    bathym <- bathym %>% tmaptools::set_projection(projection=strCRS.finl);
+  if (!is.null(strCRS.finl)) bathym <- wtsGIS::transformCRS(bathym,strCRS.finl);
 
 
   #define bounding box for map extent

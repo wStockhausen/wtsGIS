@@ -11,14 +11,14 @@
 #' @return a spatial dataset consistent with the tmap package, either a
 #' simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 #'
-#' @details Uses \code{tmaptools::read_shape} to read the shapefile. Uses \code{sf::st_transform} of \code{sp::spTransform} to
-#' convert the layer to the output CRS.
+#' @details Uses \code{tmaptools::read_shape} to read the shapefile. If requested, uses \code{transformCRS} to
+#' convert the output layer CRS to that represented by strCRS.
 #'
 #' @export
 #'
 createLayerFromShapefile<-function(file,
-                                        strCRS=tmaptools::get_proj4("longlat",output="character"),
-                                        as.sf=TRUE){
+                                   strCRS=getCRS("WGS84"),
+                                   as.sf=TRUE){
     if (!file.exists(file)) {
         warning(paste0("Shapefile '",file,"' could not be found. Returning NULL."),immediate.=TRUE);
         return(NULL);
@@ -28,12 +28,6 @@ createLayerFromShapefile<-function(file,
         warning(paste0("Shapefile '",file,"' could not be read. Returning NULL."),immediate.=TRUE);
         return(NULL);
     }
-    if (!is.null(strCRS)){
-      if (as.sf){
-        layer<-layer %>% sf::st_transform(strCRS);
-      } else {
-        layer<-sp::spTransform(layer,strCRS);#convert CRS to strCRS
-      }
-    }
+    if (!is.null(strCRS)) layer<-transformCRS(layer,strCRS);
     return(layer);
 }

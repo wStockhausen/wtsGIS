@@ -4,8 +4,7 @@
 \alias{createLayerFromShapefile}
 \title{Create a spatial layer (an sf or sp object) from a shapefile}
 \usage{
-createLayerFromShapefile(file, strCRS = tmaptools::get_proj4("longlat",
-  output = "character"), as.sf = TRUE)
+createLayerFromShapefile(file, strCRS = getCRS("WGS84"), as.sf = TRUE)
 }
 \arguments{
 \item{file}{- shapefile to read}
@@ -23,6 +22,6 @@ This function reads a shapefile and creates a spatial layer, either as a
 simple features dataset (using package \code{sf}) or as an sp dataset (using package \code{sp}).
 }
 \details{
-Uses \code{tmaptools::read_shape} to read the shapefile. Uses \code{sf::st_transform} of \code{sp::spTransform} to
-convert the layer to the output CRS.
+Uses \code{tmaptools::read_shape} to read the shapefile. If requested, uses \code{transformCRS} to
+convert the output layer CRS to that represented by strCRS.
 }

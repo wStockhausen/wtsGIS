@@ -9,18 +9,18 @@
 #' @return an sf or sp dataset
 #'
 #' @details Possible layers to pull out are:\cr
-#'  "EBS_StationLabels"         ("ebsstationlabels.shp")
-#'  "EBS_SurveyBlocks"          ("NMFS_EBSSurveyBlocks.shp")
-#'  "EBS_SurveyStations"        ("NMFS_EBSSurveyStations.PointsLL.shp")
-#'  "EBS_SurveyStrata"          ("SurveyStrata_StandardArea.shp")
-#'  "NBS_SurveyBlocks"          ("northern_blocks.shp")
-#'  "NBS_SurveyStrata"          ("SurveyStrata_NBSArea.shp")
-#'  "NW_SurveyStrata"           ("SurveyStrata_NWArea.shp")
-#'  "BSAI_StatAreas"            ("NMFS_Statistical_Areas/BSAI.shp")
-#'  "ADFG_StatAreas"            ("ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp")
-#'  "Alaska"                    ("Land/Alaska.shp")
-#'  "ShelfBathymetry"           ("Bathymetry/ShelfBathymetry.shp")
-#'  "HCA_PribilofIslands"       ("Conservation_Areas/pribilof_hca.shp")
+#'  "EBS_StationLabels"         ("ebsstationlabels.shp")\cr
+#'  "EBS_SurveyBlocks"          ("NMFS_EBSSurveyBlocks.shp")\cr
+#'  "EBS_SurveyStations"        ("NMFS_EBSSurveyStations.PointsLL.shp")\cr
+#'  "EBS_SurveyStrata"          ("SurveyStrata_StandardArea.shp")\cr
+#'  "NBS_SurveyBlocks"          ("northern_blocks.shp")\cr
+#'  "NBS_SurveyStrata"          ("SurveyStrata_NBSArea.shp")\cr
+#'  "NW_SurveyStrata"           ("SurveyStrata_NWArea.shp")\cr
+#'  "BSAI_StatAreas"            ("NMFS_Statistical_Areas/BSAI.shp")\cr
+#'  "ADFG_StatAreas"            ("ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp")\cr
+#'  "Alaska"                    ("Land/Alaska.shp")\cr
+#'  "ShelfBathymetry"           ("Bathymetry/ShelfBathymetry.shp")\cr
+#'  "HCA_PribilofIslands"       ("Conservation_Areas/pribilof_hca.shp")\cr
 #'
 #' @export
 #'

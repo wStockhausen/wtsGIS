@@ -21,7 +21,7 @@ createRasterLayer<-function(dfr,
                             bbox,
                             nx=500,
                             ny=500,
-                            strCRS=tmaptools::get_proj4("longlat",output="character"),
+                            strCRS=getCRS("WGS84"),
                             linear=TRUE,
                             extrap=FALSE,
                             duplicate="error"){
