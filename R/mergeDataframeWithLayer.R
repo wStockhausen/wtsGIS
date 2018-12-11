@@ -19,8 +19,8 @@
 #'
 mergeDataframeWithLayer<-function(dfr,
                                    geoms,
-                                   dataID="STATION_ID",
-                                   geomsID="GIS_STATION",
+                                   dataID="GIS_STATION",
+                                   geomsID="STATION_ID",
                                    allData=FALSE,
                                    duplicateGeoms=TRUE){
   #join annual dfr to geoms by matching ID values
@@ -29,13 +29,17 @@ mergeDataframeWithLayer<-function(dfr,
     # str<-c(str,
     #        "wtsGIS::tmap.MergeDataframeWithLayer() not yet implemented for simple features (sf) geometries.\n");
     # stop(str);
-    dr.geoms<-sf::left_join(dfr,geoms,
-                            by=c(dataID=geomsID));
+    message("merging using dplyr::right_join");
+    byvec<-dataID;
+    names(byvec)<-geomsID;
+    dfr.geoms<-dplyr::right_join(geoms,dfr,
+                                by=byvec);
   } else {
     #use sp functions
+    message("merging using sp::merge");
     dfr.geoms<-sp::merge(geoms,dfr,
-                        by.x=dataID,
-                        by.y=geomsID,
+                        by.x=geomsID,
+                        by.y=dataID,
                         all.x=allData,
                         duplicateGeoms=duplicateGeoms);
     if ("polygons" %in% slotNames(geoms)){

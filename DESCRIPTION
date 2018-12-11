@@ -1,8 +1,8 @@
 Package: wtsGIS
 Type: Package
 Title: Functions, Rmd scripts, and datasets relating to GIS
-Version: 2018.12.06
-Date: 2018-12-06
+Version: 2018.12.11
+Date: 2018-12-11
 Author: William Stockhausen
 Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Contains functions, Rmd scripts, and datasets relating to GIS.
@@ -10,6 +10,7 @@ License: MIT
 Requires:
     akima (>= 0.6-2)
     magrittr (>= 1.5)
+    dplyr (>= 0.7.6)
     raster (>= 2.6-7)
     sf (>=0.6-3)
     sp (>= 1.2-7)
