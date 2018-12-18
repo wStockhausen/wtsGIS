@@ -26,18 +26,18 @@
 #'
 getPackagedLayer<-function(layerName,
                            as.sf=TRUE){
-  layerNames<-rbind(data.frame(name="EBS_StationLabels", shp="NMFS_Survey_Info/ebsstationlabels.shp",stringsAsFactors=FALSE),
-                    data.frame(name="EBS_SurveyBlocks",  shp="NMFS_Survey_Info/NMFS_EBSSurveyBlocks.shp",stringsAsFactors=FALSE),
-                    data.frame(name="EBS_SurveyStations",shp="NMFS_Survey_Info/NMFS_EBSSurveyStations.PointsLL.shp",stringsAsFactors=FALSE),
-                    data.frame(name="EBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_StandardArea.shp",stringsAsFactors=FALSE),
-                    data.frame(name="NBS_SurveyBlocks",  shp="NMFS_Survey_Info/northern_blocks.shp",stringsAsFactors=FALSE),
-                    data.frame(name="NBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_NBSArea.shp",stringsAsFactors=FALSE),
-                    data.frame(name="NW_SurveyStrata",   shp="NMFS_Survey_Info/SurveyStrata_NWArea.shp",stringsAsFactors=FALSE),
-                    data.frame(name="BSAI_StatAreas",    shp="NMFS_Statistical_Areas/BSAI.shp",stringsAsFactors=FALSE),
-                    data.frame(name="ADFG_StatAreas",    shp="ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp",stringsAsFactors=FALSE),
-                    data.frame(name="Alaska",            shp="Land/Alaska.shp",stringsAsFactors=FALSE),
-                    data.frame(name="ShelfBathymetry",    shp="Bathymetry/ShelfBathymetry.shp",stringsAsFactors=FALSE),
-                    data.frame(name="HCA_PribilofIslands",shp="Conservation_Areas/pribilof_hca.shp",stringsAsFactors=FALSE),
+  layerNames<-rbind(data.frame(name="EBS_StationLabels",  shp="NMFS_Survey_Info/ebsstationlabels.shp",               stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyBlocks",   shp="NMFS_Survey_Info/NMFS_EBSSurveyBlocks.shp",           stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyStations", shp="NMFS_Survey_Info/NMFS_EBSSurveyStations.PointsLL.shp",stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyStrata",   shp="NMFS_Survey_Info/SurveyStrata_StandardArea.shp",      stringsAsFactors=FALSE),
+                    data.frame(name="NBS_SurveyBlocks",   shp="NMFS_Survey_Info/northern_blocks.shp",                stringsAsFactors=FALSE),
+                    data.frame(name="NBS_SurveyStrata",   shp="NMFS_Survey_Info/SurveyStrata_NBSArea.shp",           stringsAsFactors=FALSE),
+                    data.frame(name="NW_SurveyStrata",    shp="NMFS_Survey_Info/SurveyStrata_NWArea.shp",            stringsAsFactors=FALSE),
+                    data.frame(name="BSAI_StatAreas",     shp="NMFS_Statistical_Areas/BSAI.shp",                     stringsAsFactors=FALSE),
+                    data.frame(name="ADFG_StatAreas",     shp="ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp",       stringsAsFactors=FALSE),
+                    data.frame(name="Alaska",             shp="Land/Alaska.shp",                                     stringsAsFactors=FALSE),
+                    data.frame(name="ShelfBathymetry",    shp="Bathymetry/ShelfBathymetry.shp",                      stringsAsFactors=FALSE),
+                    data.frame(name="HCA_PribilofIslands",shp="Conservation_Areas/pribilof_hca.shp",                 stringsAsFactors=FALSE),
                 stringsAsFactors=FALSE);
   shpFile<-layerNames$shp[layerName==layerNames$name];
   if (is.null(shpFile)|(shpFile=="")) {

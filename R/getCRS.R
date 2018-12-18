@@ -14,12 +14,10 @@
 #' @export
 #'
 getCRS<-function(name){
-  org<-options(stringsAsFactors=FALSE);
-  on.exit(options(stringsAsFactors=org));
-  crsNames<-rbind(data.frame(name="WGS84",        crs=tmaptools::get_proj4(4326,output="character")),
-                  data.frame(name="NAD84",        crs=tmaptools::get_proj4(4269,output="character")),
-                  data.frame(name="AlaskaAlbers", crs=tmaptools::get_proj4(3338,output="character"))
-            );
+  crsNames<-rbind(data.frame(name="WGS84",        crs=tmaptools::get_proj4(4326,output="character"),stringsAsFactors=FALSE),
+                  data.frame(name="NAD84",        crs=tmaptools::get_proj4(4269,output="character"),stringsAsFactors=FALSE),
+                  data.frame(name="AlaskaAlbers", crs=tmaptools::get_proj4(3338,output="character"),stringsAsFactors=FALSE),
+            stringsAsFactors=FALSE);
   crs<-crsNames$crs[name==crsNames$name];
   if (is.null(crs)|(crs=="")) {
     warning(paste0("CRS associated with name '",name,"' is not defined. Returning NULL"),immediate.=TRUE);
