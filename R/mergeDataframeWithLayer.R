@@ -33,7 +33,7 @@ mergeDataframeWithLayer<-function(dfr,
     byvec<-dataID;
     names(byvec)<-geomsID;
     dfr.geoms<-dplyr::right_join(geoms,dfr,
-                                by=byvec);
+                                 by=byvec);
   } else {
     #use sp functions
     message("merging using sp::merge");

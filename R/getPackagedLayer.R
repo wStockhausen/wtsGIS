@@ -25,22 +25,20 @@
 #' @export
 #'
 getPackagedLayer<-function(layerName,
-                              as.sf=TRUE){
-  org<-options(stringsAsFactors=FALSE);
-  on.exit(options(stringsAsFactors=org));
-  layerNames<-rbind(data.frame(name="EBS_StationLabels", shp="NMFS_Survey_Info/ebsstationlabels.shp"),
-                    data.frame(name="EBS_SurveyBlocks",  shp="NMFS_Survey_Info/NMFS_EBSSurveyBlocks.shp"),
-                    data.frame(name="EBS_SurveyStations",shp="NMFS_Survey_Info/NMFS_EBSSurveyStations.PointsLL.shp"),
-                    data.frame(name="EBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_StandardArea.shp"),
-                    data.frame(name="NBS_SurveyBlocks",  shp="NMFS_Survey_Info/northern_blocks.shp"),
-                    data.frame(name="NBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_NBSArea.shp"),
-                    data.frame(name="NW_SurveyStrata",   shp="NMFS_Survey_Info/SurveyStrata_NWArea.shp"),
-                    data.frame(name="BSAI_StatAreas",    shp="NMFS_Statistical_Areas/BSAI.shp"),
-                    data.frame(name="ADFG_StatAreas",    shp="ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp"),
-                    data.frame(name="Alaska",            shp="Land/Alaska.shp"),
-                    data.frame(name="ShelfBathymetry",    shp="Bathymetry/ShelfBathymetry.shp"),
-                    data.frame(name="HCA_PribilofIslands",shp="Conservation_Areas/pribilof_hca.shp")
-                );
+                           as.sf=TRUE){
+  layerNames<-rbind(data.frame(name="EBS_StationLabels", shp="NMFS_Survey_Info/ebsstationlabels.shp",stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyBlocks",  shp="NMFS_Survey_Info/NMFS_EBSSurveyBlocks.shp",stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyStations",shp="NMFS_Survey_Info/NMFS_EBSSurveyStations.PointsLL.shp",stringsAsFactors=FALSE),
+                    data.frame(name="EBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_StandardArea.shp",stringsAsFactors=FALSE),
+                    data.frame(name="NBS_SurveyBlocks",  shp="NMFS_Survey_Info/northern_blocks.shp",stringsAsFactors=FALSE),
+                    data.frame(name="NBS_SurveyStrata",  shp="NMFS_Survey_Info/SurveyStrata_NBSArea.shp",stringsAsFactors=FALSE),
+                    data.frame(name="NW_SurveyStrata",   shp="NMFS_Survey_Info/SurveyStrata_NWArea.shp",stringsAsFactors=FALSE),
+                    data.frame(name="BSAI_StatAreas",    shp="NMFS_Statistical_Areas/BSAI.shp",stringsAsFactors=FALSE),
+                    data.frame(name="ADFG_StatAreas",    shp="ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp",stringsAsFactors=FALSE),
+                    data.frame(name="Alaska",            shp="Land/Alaska.shp",stringsAsFactors=FALSE),
+                    data.frame(name="ShelfBathymetry",    shp="Bathymetry/ShelfBathymetry.shp",stringsAsFactors=FALSE),
+                    data.frame(name="HCA_PribilofIslands",shp="Conservation_Areas/pribilof_hca.shp",stringsAsFactors=FALSE),
+                stringsAsFactors=FALSE);
   shpFile<-layerNames$shp[layerName==layerNames$name];
   if (is.null(shpFile)|(shpFile=="")) {
     warning(paste0("Shapefile associated with layer name '",layerName,"' is not defined. Returning NULL"),immediate.=TRUE);

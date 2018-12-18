@@ -11,7 +11,8 @@
 #' @return a spatial dataset consistent with the tmap package, either a
 #' simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 #'
-#' @details Uses \code{tmaptools::read_shape} to read the shapefile. If requested, uses \code{transformCRS} to
+#' @details Uses \code{tmaptools::read_shape} to read the shapefile.
+#' If requested, uses \code{wtsGIS::transformCRS} to
 #' convert the output layer CRS to that represented by strCRS.
 #'
 #' @export
@@ -28,6 +29,6 @@ createLayerFromShapefile<-function(file,
         warning(paste0("Shapefile '",file,"' could not be read. Returning NULL."),immediate.=TRUE);
         return(NULL);
     }
-    if (!is.null(strCRS)) layer<-transformCRS(layer,strCRS);
+    if (!is.null(strCRS)) layer<-wtsGIS::transformCRS(layer,strCRS);
     return(layer);
 }

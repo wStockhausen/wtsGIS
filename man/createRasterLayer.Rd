@@ -25,7 +25,7 @@ createRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
 - raster layer
 }
 \description{
-This function creates a spatial raster layer from a dataframe and a bounding box
+This function creates a spatial raster layer from a dataframe and a bounding box.
 }
 \details{
 Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.

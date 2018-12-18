@@ -22,6 +22,7 @@ This function reads a shapefile and creates a spatial layer, either as a
 simple features dataset (using package \code{sf}) or as an sp dataset (using package \code{sp}).
 }
 \details{
-Uses \code{tmaptools::read_shape} to read the shapefile. If requested, uses \code{transformCRS} to
+Uses \code{tmaptools::read_shape} to read the shapefile.
+If requested, uses \code{wtsGIS::transformCRS} to
 convert the output layer CRS to that represented by strCRS.
 }
