@@ -5,11 +5,18 @@
 #'
 #' @param name - familiar name of the CRS
 #'
-#' @return string representation of the CRS, as given by \code{tmaptools::get_proj4}
+#' @return string representation of the CRS, as given by \code{tmaptools::get_proj4(EPSG,output="character")}
 #'
-#' @details Uses \code{tmaptools::get_proj4} to get a string representation of a familiar CRS based on lookup table for
-#' the EPSG code.
-#' Currently handles "WGS84" (EPSG 4326), "NAD83" (EPSG 4269), and "AlaskaAlbers" (EPSG 3338).
+#' @details Uses \code{tmaptools::get_proj4} to get a string representation of a
+#' familiar CRS based on a lookup table for the EPSG code. The following are currently handled:
+#' \itemize{
+#'   \item{"AlaskaAlbers" (EPSG 3338)}
+#'   \item{"NAD83" (EPSG 4269)}
+#'   \item{"WGS84" (EPSG 4326)}
+#' }
+#'
+#' @examples
+#' getCRS("AlaskaAlbers")
 #'
 #' @export
 #'
@@ -20,7 +27,7 @@ getCRS<-function(name){
             stringsAsFactors=FALSE);
   crs<-crsNames$crs[name==crsNames$name];
   if (is.null(crs)|(crs=="")) {
-    warning(paste0("CRS associated with name '",name,"' is not defined. Returning NULL"),immediate.=TRUE);
+    warning(paste0("CRS associated with name '",name,"' is not yet defined. Returning NULL"),immediate.=TRUE);
     return(NULL);
   }
   return(crs);

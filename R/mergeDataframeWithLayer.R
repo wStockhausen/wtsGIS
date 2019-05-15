@@ -29,6 +29,7 @@ mergeDataframeWithLayer<-function(dfr,
     # str<-c(str,
     #        "wtsGIS::tmap.MergeDataframeWithLayer() not yet implemented for simple features (sf) geometries.\n");
     # stop(str);
+    require(sf);
     message("merging sf geoms layer using dplyr::right_join");
     byvec<-dataID;
     names(byvec)<-geomsID;

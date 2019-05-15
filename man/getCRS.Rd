@@ -10,13 +10,21 @@ getCRS(name)
 \item{name}{- familiar name of the CRS}
 }
 \value{
-string representation of the CRS, as given by \code{tmaptools::get_proj4}
+string representation of the CRS, as given by \code{tmaptools::get_proj4(EPSG,output="character")}
 }
 \description{
 Function to get a string representation for a familiar coordinate reference system.
 }
 \details{
-Uses \code{tmaptools::get_proj4} to get a string representation of a familiar CRS based on lookup table for
-the EPSG code.
-Currently handles "WGS84" (EPSG 4326), "NAD83" (EPSG 4269), and "AlaskaAlbers" (EPSG 3338).
+Uses \code{tmaptools::get_proj4} to get a string representation of a
+familiar CRS based on a lookup table for the EPSG code. The following are currently handled:
+\itemize{
+  \item{"AlaskaAlbers" (EPSG 3338)}
+  \item{"NAD83" (EPSG 4269)}
+  \item{"WGS84" (EPSG 4326)}
+}
+}
+\examples{
+getCRS("AlaskaAlbers")
+
 }

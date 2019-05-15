@@ -4,23 +4,25 @@
 #' @description Function to get a spatial layer stored with this package.
 #'
 #' @param layerName - name of layer to pull out
-#' @param as.sf - TRUE/FALSE to return dataset as an sf or sp type
+#' @param as.sf - TRUE/FALSE to return dataset as an sf (TRUE) or sp (FALSE) type
 #'
 #' @return an sf or sp dataset
 #'
-#' @details Possible layers to pull out are:\cr
-#'  "EBS_StationLabels"         ("ebsstationlabels.shp")\cr
-#'  "EBS_SurveyBlocks"          ("NMFS_EBSSurveyBlocks.shp")\cr
-#'  "EBS_SurveyStations"        ("NMFS_EBSSurveyStations.PointsLL.shp")\cr
-#'  "EBS_SurveyStrata"          ("SurveyStrata_StandardArea.shp")\cr
-#'  "NBS_SurveyBlocks"          ("northern_blocks.shp")\cr
-#'  "NBS_SurveyStrata"          ("SurveyStrata_NBSArea.shp")\cr
-#'  "NW_SurveyStrata"           ("SurveyStrata_NWArea.shp")\cr
-#'  "BSAI_StatAreas"            ("NMFS_Statistical_Areas/BSAI.shp")\cr
-#'  "ADFG_StatAreas"            ("ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp")\cr
-#'  "Alaska"                    ("Land/Alaska.shp")\cr
-#'  "ShelfBathymetry"           ("Bathymetry/ShelfBathymetry.shp")\cr
-#'  "HCA_PribilofIslands"       ("Conservation_Areas/pribilof_hca.shp")\cr
+#' @details Possible layers to pull out are:
+#' \itemize{
+#'  \item{"EBS_StationLabels"         ("ebsstationlabels.shp")}
+#'  \item{"EBS_SurveyBlocks"          ("NMFS_EBSSurveyBlocks.shp")}
+#'  \item{"EBS_SurveyStations"        ("NMFS_EBSSurveyStations.PointsLL.shp")}
+#'  \item{"EBS_SurveyStrata"          ("SurveyStrata_StandardArea.shp")}
+#'  \item{"NBS_SurveyBlocks"          ("northern_blocks.shp")}
+#'  \item{"NBS_SurveyStrata"          ("SurveyStrata_NBSArea.shp")}
+#'  \item{"NW_SurveyStrata"           ("SurveyStrata_NWArea.shp")}
+#'  \item{"BSAI_StatAreas"            ("NMFS_Statistical_Areas/BSAI.shp")}
+#'  \item{"ADFG_StatAreas"            ("ADFG_Statistical_Areas/ADFG_StatAreas_EBS.shp")}
+#'  \item{"Alaska"                    ("Land/Alaska.shp")}
+#'  \item{"ShelfBathymetry"           ("Bathymetry/ShelfBathymetry.shp")}
+#'  \item{"HCA_PribilofIslands"       ("Conservation_Areas/pribilof_hca.shp")}
+#' }
 #'
 #' @export
 #'

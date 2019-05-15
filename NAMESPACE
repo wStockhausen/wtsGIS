@@ -3,6 +3,8 @@
 export(createBaseTMap)
 export(createLayerFromShapefile)
 export(createRasterLayer)
+export(createSFC_points)
+export(createSFDataset_points)
 export(gClip)
 export(getCRS)
 export(getPackagedLayer)
