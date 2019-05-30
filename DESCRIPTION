@@ -1,8 +1,8 @@
 Package: wtsGIS
 Type: Package
 Title: Functions, Rmd scripts, and datasets relating to GIS
-Version: 2019.05.15
-Date: 2019-05-15
+Version: 2019.05.30
+Date: 2019-05-30
 Author: William Stockhausen
 Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Contains functions, Rmd scripts, and datasets relating to GIS.
