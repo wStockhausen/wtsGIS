@@ -9,7 +9,7 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
   strCRS.orig = NULL, strCRS.finl = getCRS("WGS84"),
   boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =
   list(lon = -157, lat = 62.5)), colors.bathym = "darkblue",
-  points.size = 0.01)
+  alpha.bathym = 1, points.size = 0.01)
 }
 \arguments{
 \item{layer.land}{- a tmap layer representing land}
@@ -29,6 +29,8 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
 \item{boundingbox}{- a tmap-style bounding box}
 
 \item{colors.bathym}{- color for the bathymetry}
+
+\item{alpha.bathym}{- transparency for the bathymetry}
 
 \item{points.size}{- size of points, in map units}
 }

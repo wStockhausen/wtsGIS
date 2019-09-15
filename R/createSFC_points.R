@@ -5,7 +5,7 @@
 #'
 #' @param x - vector of x coordinates
 #' @param y - vector of y coordinates
-#' @param crs - coordinate refernce system: EPSG code or character with proj4string
+#' @param crs - coordinate reference system: EPSG code or character with proj4string
 #'
 #' @return an object of class sfc_POINT
 #'

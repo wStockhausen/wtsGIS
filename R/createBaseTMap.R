@@ -17,6 +17,7 @@
 #' @param strCRS.finl - string representation of final CRS (default = WGS84) used for the basemap
 #' @param boundingbox - a tmap-style bounding box
 #' @param colors.bathym - color for the bathymetry
+#' @param alpha.bathym - transparency for the bathymetry
 #' @param points.size - size of points, in map units
 #'
 #' @return - basemap layer based on the tmap package
@@ -35,6 +36,7 @@ createBaseTMap<-function( layer.land=NULL,
                               boundingbox=list(bottomleft=list(lon=-179,lat=54),
                                                topright  =list(lon=-157,lat=62.5)),
                               colors.bathym="darkblue",
+                              alpha.bathym=1.0,
                               points.size=0.01
                               ){
 
@@ -79,7 +81,8 @@ createBaseTMap<-function( layer.land=NULL,
   basemap<-tmap::tm_shape(land,bbox=bbext,is.master=TRUE,projection=strCRS.finl)+
              tmap::tm_fill();
   if (!is.null(bathym))
-      basemap <- basemap + tmap::tm_shape(bathym) + tmap::tm_lines(col=colors.bathym);
+      basemap <- basemap + tmap::tm_shape(bathym) + tmap::tm_lines(col=colors.bathym,
+                                                                   alpha=alpha.bathym);
 
   return(basemap);
 }

@@ -11,7 +11,7 @@ createSFC_points(x, y, crs = sf::NA_crs_)
 
 \item{y}{- vector of y coordinates}
 
-\item{crs}{- coordinate refernce system: EPSG code or character with proj4string}
+\item{crs}{- coordinate reference system: EPSG code or character with proj4string}
 }
 \value{
 an object of class sfc_POINT
