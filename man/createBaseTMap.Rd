@@ -8,7 +8,8 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
   gisPath = NULL, shapeFile.land = NULL, shapeFile.bathymetry = NULL,
   strCRS.orig = NULL, strCRS.finl = getCRS("WGS84"),
   boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =
-  list(lon = -157, lat = 62.5)), colors.bathym = "darkblue",
+  list(lon = -157, lat = 62.5)), colors.bg = "white",
+  colors.land = "grey85", colors.bathym = "darkblue",
   alpha.bathym = 1, points.size = 0.01)
 }
 \arguments{
@@ -27,6 +28,10 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
 \item{strCRS.finl}{- string representation of final CRS (default = WGS84) used for the basemap}
 
 \item{boundingbox}{- a tmap-style bounding box}
+
+\item{colors.bg}{- background color}
+
+\item{colors.land}{- color for land}
 
 \item{colors.bathym}{- color for the bathymetry}
 
