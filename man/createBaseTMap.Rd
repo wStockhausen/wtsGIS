@@ -27,7 +27,7 @@ createBaseTMap(layer.land = NULL, layer.bathym = NULL,
 
 \item{strCRS.finl}{- string representation of final CRS (default = WGS84) used for the basemap}
 
-\item{boundingbox}{- a tmap-style bounding box}
+\item{boundingbox}{- a bounding box (see details)}
 
 \item{colors.bg}{- background color}
 
@@ -50,4 +50,11 @@ The basemap contains a land layer (polygons) and a bathymetry layer (lines).
 Uses \code{getPackagedLayer} or \code{wtsUtilities::createLayerFromShapefile} to create the
 land and bathymetric layers. If boundingbox is NULL, then the
 bounding box for the land layer is used as the bounding box for the basemap.
+
+
+Bounding box options:
+ 1. list with elements bottomleft and topright, each a list with elements lon and lat
+ 2. an sf::bbox object (numeric vector with named elements xmin, ymin, xmax, ymax)
+ 3. a matrix with rows corresponding to x and y, columns to min and max (used by the sp package)
+ 4. a raster::extent object (numeric vector with named elements xmin, xmax, ymin, ymax)
 }

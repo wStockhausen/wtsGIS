@@ -15,7 +15,7 @@
 #' @param shapeFile.bathymetry - bathymetry shapefile (if layer.bathym is not provided)
 #' @param strCRS.orig - string representation of original CRS (default = WGS84) used for ALL shapefiles
 #' @param strCRS.finl - string representation of final CRS (default = WGS84) used for the basemap
-#' @param boundingbox - a tmap-style bounding box
+#' @param boundingbox - a bounding box (see details)
 #' @param colors.bg - background color
 #' @param colors.land - color for land
 #' @param colors.bathym - color for the bathymetry
@@ -24,25 +24,31 @@
 #'
 #' @return - basemap layer based on the tmap package
 #'
+#' @details Bounding box options:
+#'  1. list with elements bottomleft and topright, each a list with elements lon and lat
+#'  2. an sf::bbox object (numeric vector with named elements xmin, ymin, xmax, ymax)
+#'  3. a matrix with rows corresponding to x and y, columns to min and max (used by the sp package)
+#'  4. a raster::extent object (numeric vector with named elements xmin, xmax, ymin, ymax)
+#'
 #' @import magrittr
 #'
 #' @export
 #'
 createBaseTMap<-function( layer.land=NULL,
-                              layer.bathym=NULL,
-                              gisPath=NULL,
-                              shapeFile.land      =NULL,
-                              shapeFile.bathymetry=NULL,
-                              strCRS.orig=NULL,
-                              strCRS.finl=getCRS("WGS84"),
-                              boundingbox=list(bottomleft=list(lon=-179,lat=54),
-                                               topright  =list(lon=-157,lat=62.5)),
-                              colors.bg="white",
-                              colors.land="grey85",
-                              colors.bathym="darkblue",
-                              alpha.bathym=1.0,
-                              points.size=0.01
-                              ){
+                          layer.bathym=NULL,
+                          gisPath=NULL,
+                          shapeFile.land      =NULL,
+                          shapeFile.bathymetry=NULL,
+                          strCRS.orig=NULL,
+                          strCRS.finl=getCRS("WGS84"),
+                          boundingbox=list(bottomleft=list(lon=-179,lat=54),
+                                           topright  =list(lon=-157,lat=62.5)),
+                          colors.bg="white",
+                          colors.land="grey85",
+                          colors.bathym="darkblue",
+                          alpha.bathym=1.0,
+                          points.size=0.01
+                          ){
 
   land<-layer.land;
   if (is.null(land)){
@@ -73,12 +79,29 @@ createBaseTMap<-function( layer.land=NULL,
 
 
   #define bounding box for map extent
-  bbext<-tmaptools::bb(land);#just to get a bounding box
+  bbext<-tmaptools::bb(land);#just to get a bounding box as an sf::bbox object
   if (!is.null(boundingbox)){
-    bbext['xmin']<-boundingbox$bottomleft$lon;
-    bbext['ymin']<-boundingbox$bottomleft$lat;
-    bbext['xmax']<-boundingbox$topright$lon;
-    bbext['ymax']<-boundingbox$topright$lat;
+    if (inherits(boundingbox,"bbox")) {
+      bbext<-boundingbox;
+    } else if (inherits(boundingbox,"extent")) {
+      bbext['xmin']<-boundingbox['xmin'];
+      bbext['ymin']<-boundingbox['ymin'];
+      bbext['xmax']<-boundingbox['xmax'];
+      bbext['ymax']<-boundingbox['ymax'];
+    } else if (inherits(boundingbox,"matrix")) {
+      bbext['xmin']<-boundingbox[1,1];
+      bbext['ymin']<-boundingbox[2,1];
+      bbext['xmax']<-boundingbox[1,2];
+      bbext['ymax']<-boundingbox[2,2];
+    } else if (inherits(boundingbox,"list")) {
+      bbext['xmin']<-boundingbox$bottomleft$lon;
+      bbext['ymin']<-boundingbox$bottomleft$lat;
+      bbext['xmax']<-boundingbox$topright$lon;
+      bbext['ymax']<-boundingbox$topright$lat;
+    } else {
+      msg<-"bounding box format not recognized.";
+      stop(msg);
+    }
   }
 
   #basemap using CRS from strCRS
