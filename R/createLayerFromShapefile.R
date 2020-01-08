@@ -11,7 +11,8 @@
 #' @return a spatial dataset consistent with the tmap package, either a
 #' simple features dataset or an sp dataset depending on whether as.sf is TRUE or FALSE.
 #'
-#' @details Uses \code{tmaptools::read_shape} to read the shapefile.
+#' @details If as.sf=TRUE, the function uses \code{sf::st_read} to
+#' read the shapefile; otherwise, it uses \code{rgdal::readOGR}.
 #' If requested, uses \code{wtsGIS::transformCRS} to
 #' convert the output layer CRS to that represented by strCRS.
 #'
@@ -24,7 +25,15 @@ createLayerFromShapefile<-function(file,
         warning(paste0("Shapefile '",file,"' could not be found. Returning NULL."),immediate.=TRUE);
         return(NULL);
     }
-    layer<-tmaptools::read_shape(file=file,stringsAsFactors=FALSE,as.sf=as.sf);
+    if (as.sf){
+        layer<-sf::st_read(dsn=file,stringsAsFactors=FALSE);
+    } else {
+        shpname<-basename(file);
+        if (stringi::stri_endswith(tolower(shpname),fixed=".shp"))
+            shpname<-stringi::stri_replace_last(shpname,"",fixed=".shp");
+        layer<-rgdal::readOGR(dsn=dirname(file),layer=shpname,stringsAsFactors=FALSE);
+    }
+
     if (is.null(layer)) {
         warning(paste0("Shapefile '",file,"' could not be read. Returning NULL."),immediate.=TRUE);
         return(NULL);
