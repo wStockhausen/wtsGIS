@@ -4,13 +4,22 @@
 \alias{createBaseTMap}
 \title{Create a basemap layer for maps based on the tmap package}
 \usage{
-createBaseTMap(layer.land = NULL, layer.bathym = NULL,
-  gisPath = NULL, shapeFile.land = NULL, shapeFile.bathymetry = NULL,
-  strCRS.orig = NULL, strCRS.finl = getCRS("WGS84"),
-  boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright =
-  list(lon = -157, lat = 62.5)), colors.bg = "white",
-  colors.land = "grey85", colors.bathym = "darkblue",
-  alpha.bathym = 1, points.size = 0.01)
+createBaseTMap(
+  layer.land = NULL,
+  layer.bathym = NULL,
+  gisPath = NULL,
+  shapeFile.land = NULL,
+  shapeFile.bathymetry = NULL,
+  strCRS.orig = NULL,
+  strCRS.finl = getCRS("WGS84"),
+  boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright = list(lon =
+    -157, lat = 62.5)),
+  colors.bg = "white",
+  colors.land = "grey85",
+  colors.bathym = "darkblue",
+  alpha.bathym = 1,
+  points.size = 0.01
+)
 }
 \arguments{
 \item{layer.land}{- a tmap layer representing land}
@@ -50,7 +59,6 @@ The basemap contains a land layer (polygons) and a bathymetry layer (lines).
 Uses \code{getPackagedLayer} or \code{wtsUtilities::createLayerFromShapefile} to create the
 land and bathymetric layers. If boundingbox is NULL, then the
 bounding box for the land layer is used as the bounding box for the basemap.
-
 
 Bounding box options:
  1. list with elements bottomleft and topright, each a list with elements lon and lat

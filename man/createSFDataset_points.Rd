@@ -4,8 +4,12 @@
 \alias{createSFDataset_points}
 \title{Create an sf (simple features) dataset with point geometries}
 \usage{
-createSFDataset_points(dfr, xCol = "longitude", yCol = "latitude",
-  strCRS = tmaptools::get_proj4("longlat", output = "character"))
+createSFDataset_points(
+  dfr,
+  xCol = "longitude",
+  yCol = "latitude",
+  strCRS = tmaptools::get_proj4("longlat", output = "character")
+)
 }
 \arguments{
 \item{dfr}{- dataframe with columns for x,y coordinates for points}

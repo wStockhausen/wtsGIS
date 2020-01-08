@@ -4,8 +4,14 @@
 \alias{mergeDataframeWithLayer}
 \title{Merge a dataframe with a geometry layer}
 \usage{
-mergeDataframeWithLayer(dfr, geoms, dataID = "GIS_STATION",
-  geomsID = "STATION_ID", allData = FALSE, duplicateGeoms = TRUE)
+mergeDataframeWithLayer(
+  dfr,
+  geoms,
+  dataID = "GIS_STATION",
+  geomsID = "STATION_ID",
+  allData = FALSE,
+  duplicateGeoms = TRUE
+)
 }
 \arguments{
 \item{dfr}{- dataframe to merge}

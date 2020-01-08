@@ -4,8 +4,11 @@
 \alias{setBoundingBoxOnMap}
 \title{Set a bounding box on a map}
 \usage{
-setBoundingBoxOnMap(map, bbox, crs_bbox = tmaptools::get_proj4("longlat",
-  output = "character"))
+setBoundingBoxOnMap(
+  map,
+  bbox,
+  crs_bbox = tmaptools::get_proj4("longlat", output = "character")
+)
 }
 \arguments{
 \item{map}{- tmap object}

@@ -4,9 +4,17 @@
 \alias{createRasterLayer}
 \title{Create a spatial raster layer from a dataframe and a bounding box}
 \usage{
-createRasterLayer(dfr, col, bbox, nx = 500, ny = 500,
-  strCRS = getCRS("WGS84"), linear = TRUE, extrap = FALSE,
-  duplicate = "error")
+createRasterLayer(
+  dfr,
+  col,
+  bbox,
+  nx = 500,
+  ny = 500,
+  strCRS = getCRS("WGS84"),
+  linear = TRUE,
+  extrap = FALSE,
+  duplicate = "error"
+)
 }
 \arguments{
 \item{dfr}{- spatial dataframe with data to rasterize}
