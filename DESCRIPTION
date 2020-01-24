@@ -1,8 +1,8 @@
 Package: wtsGIS
 Type: Package
 Title: Functions, Rmd scripts, and datasets relating to GIS
-Version: 2020.01.08
-Date: 2020-01-08
+Version: 2020.01.24
+Date: 2020-01-24
 Author: William Stockhausen
 Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
 Description: Contains functions, Rmd scripts, and datasets relating to GIS.
@@ -12,6 +12,7 @@ Requires:
     magrittr (>= 1.5)
     dplyr (>= 0.7.6)
     raster (>= 2.6-7)
+    rgdal (>=1.4-8)
     sf (>=0.6-3)
     sp (>= 1.2-7)
     stringi (>= 1.4.3)
@@ -22,7 +23,6 @@ Imports:
     akima,
     magrittr,
     raster,
-    tmap,
     tmap (>= 2.0),
     tmaptools (>= 2.0)
 RoxygenNote: 7.0.2
