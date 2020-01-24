@@ -19,4 +19,5 @@ Function to write an object with geometry information( (e.g. an sf dataframe)) a
 }
 \details{
 Wrapper for \code{sf::st_write(...)} or \code{rgdal::writeOGR(...)}.
+Note that column names are limited to 10 characters max.
 }
