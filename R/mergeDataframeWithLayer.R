@@ -25,11 +25,6 @@ mergeDataframeWithLayer<-function(dfr,
                                    duplicateGeoms=TRUE){
   #join annual dfr to geoms by matching ID values
   if (inherits(geoms,c("sf","sfc","sfg"))){
-    # str<-paste("geoms are simple features of class",class(geoms),"\n");
-    # str<-c(str,
-    #        "wtsGIS::tmap.MergeDataframeWithLayer() not yet implemented for simple features (sf) geometries.\n");
-    # stop(str);
-    require(sf);
     message("merging sf geoms layer using dplyr::right_join");
     byvec<-dataID;
     names(byvec)<-geomsID;
@@ -43,7 +38,7 @@ mergeDataframeWithLayer<-function(dfr,
                         by.y=dataID,
                         all.x=allData,
                         duplicateGeoms=duplicateGeoms);
-    if ("polygons" %in% slotNames(geoms)){
+    if ("polygons" %in% methods::slotNames(geoms)){
       #assign unique FIDs to polygons (merge above does not assign unique IDs to duplicate geoms)
       dfr.geoms<-sp::spChFIDs(dfr.geoms,
                               as.character(1:length(dfr.geoms@polygons)));

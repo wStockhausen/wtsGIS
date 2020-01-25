@@ -16,7 +16,7 @@
 #' 4. dataframe with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 #' \cr
 #' Also, the bounding box must be in the same coordinate system as the set of polygons.\cr
-#' Uses \code{raster::extent}, \code{sp::proj4string}, and \code{rgeos::gIntersection}.
+#' Uses packages \code{methods},\code{raster}, \code{sp}, and \code{rgeos}.
 #'
 #' @export
 #'
@@ -25,10 +25,10 @@ gClip <- function(shp, bb,verbosity=0){
     bp<-bb;
     if (class(bp)=="data.frame"){
         if (verbosity>1) cat("bp is a data.frame\n")
-        b_poly <- as(raster::extent(as.vector((as.matrix(bp)))), "SpatialPolygons")
+        b_poly <- methods::as(raster::extent(as.vector((as.matrix(bp)))), "SpatialPolygons")
     } else if (class(bp) == "matrix") {
         if (verbosity>1) cat("bp is a matrix\n")
-        b_poly <- as(raster::extent(as.vector(t(bp))), "SpatialPolygons")
+        b_poly <- methods::as(raster::extent(as.vector(t(bp))), "SpatialPolygons")
     } else {
         #bp expected in order xmin,xmax,ymin,ymax
         if ('left'==tolower(names(bp)[1])){
@@ -38,7 +38,7 @@ gClip <- function(shp, bb,verbosity=0){
             names(bp)<-c('xmin','xmax','ymin','ymax');
             if (verbosity>1) print(bp);
         }
-        b_poly <- as(raster::extent(bp), "SpatialPolygons")
+        b_poly <- methods::as(raster::extent(bp), "SpatialPolygons")
     }
     if (verbosity>0) print(b_poly);
 

@@ -17,8 +17,8 @@
 writeTableToCSV<-function(tbl,
                            file="table.csv"){
   if (inherits(tbl,"sf")){
-    write.csv(sf::st_drop_geometry(tbl),file=file,row.names=FALSE);
+    utils::write.csv(sf::st_drop_geometry(tbl),file=file,row.names=FALSE);
   } else {
-    write.csv(tbl,file=file,row.names=FALSE);
+    utils::write.csv(tbl,file=file,row.names=FALSE);
   }
 }

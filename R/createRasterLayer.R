@@ -11,6 +11,9 @@
 #' @param nx - number of cells in y direction
 #' @param ny - number of cells in y direction
 #' @param strCRS - string representation of CRS in PROJ4 format (default yields long/lat in WGS84)
+#' @param linear - flag passed to \code{akima::interp}
+#' @param extrap - flag passed to \code{akima::interp}
+#' @param duplicate - string passed to \code{akima::interp}
 #'
 #' @return - raster layer
 #'
@@ -29,7 +32,7 @@ createRasterLayer<-function(dfr,
   ygs<-seq(bbox["ymin"],bbox["ymax"],length=500);
   intp<-akima::interp(x=dfr,z=col,
                       xo=xgs,yo=ygs,nx=nx,ny=ny,
-                      linear=linear,extrap=FALSE,duplicate="error");
+                      linear=linear,extrap=extrap,duplicate=duplicate);
   if (is.list(intp)){
     intp2<-as.data.frame(akima::interp2xyz(intp,data.frame=TRUE));
     coords<-as.matrix(intp2[,1:2]);

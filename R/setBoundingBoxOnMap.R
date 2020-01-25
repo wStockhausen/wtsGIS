@@ -17,7 +17,7 @@ setBoundingBoxOnMap<-function(map,
                               bbox,
                               crs_bbox=tmaptools::get_proj4("longlat",output="character")){
   crs_map<-map[[1]]$projection;
-  if (is.null(crs_bbox)) crs_bbox <- get_proj4(bbox);
+  if (is.null(crs_bbox)) crs_bbox <- tmaptools::get_proj4(bbox);
   bbox2<-tmaptools::bb(bbox,
                        current.projection=crs_bbox,
                        projection=crs_map);

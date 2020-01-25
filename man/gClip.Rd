@@ -27,5 +27,5 @@ The bounding box can be one of the following (see extent{raster}):\cr
 4. dataframe with columns corresponding to "x","y" and rows to "lower left", "upper right"\cr
 \cr
 Also, the bounding box must be in the same coordinate system as the set of polygons.\cr
-Uses \code{raster::extent}, \code{sp::proj4string}, and \code{rgeos::gIntersection}.
+Uses packages \code{methods},\code{raster}, \code{sp}, and \code{rgeos}.
 }

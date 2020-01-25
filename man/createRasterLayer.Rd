@@ -28,6 +28,12 @@ createRasterLayer(
 \item{ny}{- number of cells in y direction}
 
 \item{strCRS}{- string representation of CRS in PROJ4 format (default yields long/lat in WGS84)}
+
+\item{linear}{- flag passed to \code{akima::interp}}
+
+\item{extrap}{- flag passed to \code{akima::interp}}
+
+\item{duplicate}{- string passed to \code{akima::interp}}
 }
 \value{
 - raster layer
