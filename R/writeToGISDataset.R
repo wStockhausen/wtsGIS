@@ -7,7 +7,7 @@
 #' @param driver - name of dataset driver (run \code{sf::st_drivers()} to see installed drivers )
 #' @param dsn - dsn for output (folder or file, depnding on output)
 #' @param delete_dsn - flag to delete the dsn before writing
-#' @param layer - name of layer written to (assuming dsn has layers)
+#' @param layer - name of layer written to (assuming dsn has layers), or NULL
 #' @param delete_layer - flag to delete the layer before writing
 #'
 #' @return an invisible NULL.
@@ -21,7 +21,7 @@ writeToGISDataset<-function(
                           driver="ESRI Shapefile",
                           dsn=".",
                           delete_dsn=FALSE,
-                          layer="shape",
+                          layer=NULL,
                           delete_layer=TRUE){
   if (any(inherits(obj,c("sf","sfc")))){
     sf::st_write(obj,

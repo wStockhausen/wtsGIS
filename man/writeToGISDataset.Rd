@@ -9,7 +9,7 @@ writeToGISDataset(
   driver = "ESRI Shapefile",
   dsn = ".",
   delete_dsn = FALSE,
-  layer = "shape",
+  layer = NULL,
   delete_layer = TRUE
 )
 }
@@ -22,7 +22,7 @@ writeToGISDataset(
 
 \item{delete_dsn}{- flag to delete the dsn before writing}
 
-\item{layer}{- name of layer written to (assuming dsn has layers)}
+\item{layer}{- name of layer written to (assuming dsn has layers), or NULL}
 
 \item{delete_layer}{- flag to delete the layer before writing}
 }

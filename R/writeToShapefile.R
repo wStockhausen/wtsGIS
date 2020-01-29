@@ -22,9 +22,8 @@ writeToShapefile<-function(obj,
     }
   }
   folder<-dirname(file);
-  layer<-basename(file);
-  if (stringi::stri_sub(layer,from=-4,to=-1)==".shp") layer<-stringi::stri_sub(layer,from=1,to=-5);
+  if (stringi::stri_sub(file,from=-4,to=-1)!=".shp") file<-paste0(file,".shp");
   if (!dir.exists(folder)) dir.create(folder,recursive=TRUE);
-  writeToGISDataset(obj,dsn=folder,layer=layer,driver="ESRI Shapefile",delete_layer=TRUE);
+  writeToGISDataset(obj,dsn=file,delete_dsn=TRUE,delete_layer=TRUE,driver="ESRI Shapefile");
   return(invisible(NULL));
 }
