@@ -2,15 +2,16 @@
 % Please edit documentation in R/mergeDataframeWithLayer.R
 \name{mergeDataframeWithLayer}
 \alias{mergeDataframeWithLayer}
-\title{Merge a dataframe with a geometry layer}
+\title{Merge (join) a dataframe with (to) a geometry layer}
 \usage{
 mergeDataframeWithLayer(
   dfr,
   geoms,
   dataID = "GIS_STATION",
   geomsID = "STATION_ID",
-  allData = FALSE,
-  duplicateGeoms = TRUE
+  sfJoinType = c("right join", "left join", "inner join", "full join"),
+  spAllData = FALSE,
+  spDuplicateGeoms = TRUE
 )
 }
 \arguments{
@@ -22,17 +23,29 @@ mergeDataframeWithLayer(
 
 \item{geomsID}{- name of id column in geometry layer to join on}
 
-\item{allData}{- flag to merge all rows from dataframe}
+\item{sfJoinType}{- join type (dfr to geoms) for sf-like geometries}
 
-\item{duplicateGeoms}{- allow geoms to be duplicated (i.e., where multiple rows in dataframe maatch a single geom)}
+\item{spAllData}{- flag to merge all rows from dataframe with sp-like geometries}
+
+\item{spDuplicateGeoms}{- allow sp-like geoms to be duplicated (i.e., where multiple rows in dataframe maatch a single geom)}
 }
 \value{
-- merged spatial dataframe (based on sf or sp classes, depending on class of geoms)
+- sf or sp dataframe (depending on the class of the geoms object).
 }
 \description{
-This function merges a dataset with a geometry layer.
+This function merges (joins) a dataset with (to) a geometry layer.
 }
 \details{
-If geoms is an sf-like spatial dataset, the merge is conducted using \code{sf::left_join}; otherwise,
-it is conducted using \code{sp:merge}.
+Uses packages \code{dplyr}, \code{sf} and \code{sp}.
+If geoms is an sp dataset, the merge is conducted using \code{sp:merge}.
+If geoms is an sf dataset, it is conducted using one of the join functions
+in package \code{dplyr}. The results of this join will depend on the join type:
+
+ - right join: matched rows in \code{dfr},         all rows in \code{roms_grid}
+
+ - left join:      all rows in \code{dfr},     matched rows in \code{roms_grid}
+
+ - inner join: only rows in \code{dfr} matched to \code{roms_grid}
+
+ - full join:  all rows in \code{dfr} and all rows in \code{roms_grid}
 }
