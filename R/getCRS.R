@@ -22,7 +22,7 @@
 #'
 getCRS<-function(name){
   crsNames<-rbind(data.frame(name="WGS84",        crs=tmaptools::get_proj4(4326,output="character"),stringsAsFactors=FALSE),
-                  data.frame(name="NAD84",        crs=tmaptools::get_proj4(4269,output="character"),stringsAsFactors=FALSE),
+                  data.frame(name="NAD83",        crs=tmaptools::get_proj4(4269,output="character"),stringsAsFactors=FALSE),
                   data.frame(name="AlaskaAlbers", crs=tmaptools::get_proj4(3338,output="character"),stringsAsFactors=FALSE),
             stringsAsFactors=FALSE);
   crs<-crsNames$crs[name==crsNames$name];
