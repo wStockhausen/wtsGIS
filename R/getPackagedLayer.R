@@ -42,7 +42,7 @@ getPackagedLayer<-function(layerName,
                     data.frame(name="HCA_PribilofIslands",shp="Conservation_Areas/pribilof_hca.shp",                 stringsAsFactors=FALSE),
                 stringsAsFactors=FALSE);
   shpFile<-layerNames$shp[layerName==layerNames$name];
-  if (is.null(shpFile)|(shpFile=="")) {
+  if (length(shpFile)==0||is.null(shpFile)||(shpFile=="")) {
     warning(paste0("Shapefile associated with layer name '",layerName,"' is not defined. Returning NULL"),immediate.=TRUE);
     return(NULL);
   }

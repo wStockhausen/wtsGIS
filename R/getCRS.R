@@ -26,7 +26,7 @@ getCRS<-function(name){
                   data.frame(name="AlaskaAlbers", crs=tmaptools::get_proj4(3338,output="character"),stringsAsFactors=FALSE),
             stringsAsFactors=FALSE);
   crs<-crsNames$crs[name==crsNames$name];
-  if (is.null(crs)|(crs=="")) {
+  if (length(crs)==0||is.null(crs)||(crs=="")) {
     warning(paste0("CRS associated with name '",name,"' is not yet defined. Returning NULL"),immediate.=TRUE);
     return(NULL);
   }
