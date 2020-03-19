@@ -8,13 +8,16 @@
 #' If geoms is an sf dataset, it is conducted using one of the join functions
 #' in package \code{dplyr}. The results of this join will depend on the join type:
 #'
-#'  - right join: matched rows in \code{dfr},         all rows in \code{roms_grid}
+#'  - right join: matched rows in \code{dfr},         all rows in \code{geoms}
 #'
-#'  - left join:      all rows in \code{dfr},     matched rows in \code{roms_grid}
+#'  - left join:      all rows in \code{dfr},     matched rows in \code{geoms}
 #'
-#'  - inner join: only rows in \code{dfr} matched to \code{roms_grid}
+#'  - inner join: only rows in \code{dfr} matched to \code{geoms}
 #'
-#'  - full join:  all rows in \code{dfr} and all rows in \code{roms_grid}
+#'  - full join:  all rows in \code{dfr} and all rows in \code{geoms}
+#'
+#' The join column will take its name from \code{dataID} in \code{dfr} and will *not* include
+#' a column named \code{geomsID}.
 #'
 #' @param dfr - dataframe to merge
 #' @param geoms - geometries to merge with
@@ -43,7 +46,7 @@ mergeDataframeWithLayer<-function(dfr,
       dfr.geoms<-dplyr::right_join(dfr,geoms,
                                    by=byvec);
     } else if (tolower(sfJoinType[1])=="left join"){
-      message("merging dfr to sf geoms layer using dplyr::leftt_join");
+      message("merging dfr to sf geoms layer using dplyr::left_join");
       dfr.geoms<-dplyr::left_join(dfr,geoms,
                                    by=byvec);
     } else if (tolower(sfJoinType[1])=="inner join"){
