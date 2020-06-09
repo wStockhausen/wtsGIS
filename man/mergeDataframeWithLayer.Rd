@@ -41,11 +41,14 @@ If geoms is an sp dataset, the merge is conducted using \code{sp:merge}.
 If geoms is an sf dataset, it is conducted using one of the join functions
 in package \code{dplyr}. The results of this join will depend on the join type:
 
- - right join: matched rows in \code{dfr},         all rows in \code{roms_grid}
+ - right join: matched rows in \code{dfr},         all rows in \code{geoms}
 
- - left join:      all rows in \code{dfr},     matched rows in \code{roms_grid}
+ - left join:      all rows in \code{dfr},     matched rows in \code{geoms}
 
- - inner join: only rows in \code{dfr} matched to \code{roms_grid}
+ - inner join: only rows in \code{dfr} matched to \code{geoms}
 
- - full join:  all rows in \code{dfr} and all rows in \code{roms_grid}
+ - full join:  all rows in \code{dfr} and all rows in \code{geoms}
+
+The join column will take its name from \code{dataID} in \code{dfr} and will *not* include
+a column named \code{geomsID}.
 }
