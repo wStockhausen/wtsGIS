@@ -4,12 +4,12 @@
 \alias{transformCRS}
 \title{Transform a spatial dataset to a different coordinate reference system}
 \usage{
-transformCRS(layer, strCRS)
+transformCRS(layer, toCRS)
 }
 \arguments{
 \item{layer}{- spatial data layer to transform}
 
-\item{strCRS}{- string representation of final CRS}
+\item{toCRS}{- representation of final coordinate reference system (see @details)}
 }
 \value{
 spatial layer of same type as input (sf or sp)
@@ -18,5 +18,9 @@ spatial layer of same type as input (sf or sp)
 Function to transform a spatial dataset to a different coordinate reference system.
 }
 \details{
-Uses \code{tmaptools::set_projection}
+If \code{layer} is an object of class sf, sfc, or sfg, then \code{toCRS}
+should be convertible to an sf::crs object via \code{get_crs(toCRS)}.
+
+If \code{layer} is an object of class Spatial, then \code{toCRS}
+should be convertible to an sp::CRS object via \code{get_spCRS(toCRS)} .
 }

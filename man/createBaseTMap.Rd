@@ -5,15 +5,10 @@
 \title{Create a basemap layer for maps based on the tmap package}
 \usage{
 createBaseTMap(
-  layer.land = NULL,
-  layer.bathym = NULL,
-  gisPath = NULL,
-  shapeFile.land = NULL,
-  shapeFile.bathymetry = NULL,
-  strCRS.orig = NULL,
-  strCRS.finl = getCRS("WGS84"),
-  boundingbox = list(bottomleft = list(lon = -179, lat = 54), topright = list(lon =
-    -157, lat = 62.5)),
+  layer.land = getPackagedLayer("Alaska"),
+  layer.bathym = getPackagedLayer("ShelfBathymetry"),
+  crs.finl = get_crs("WGS84"),
+  bbox = getStandardBBox("EBS"),
   colors.bg = "white",
   colors.land = "grey85",
   colors.bathym = "darkblue",
@@ -22,21 +17,13 @@ createBaseTMap(
 )
 }
 \arguments{
-\item{layer.land}{- a tmap layer representing land}
+\item{layer.land}{- a \code{sf::sf} object representing land}
 
-\item{layer.bathym}{- a tmap layer representing bathymetry}
+\item{layer.bathym}{- a \code{sf::sf} object representing bathymetry}
 
-\item{gisPath}{- path to top level folder for shapefiles}
+\item{crs.finl}{- representation of final (display) coordinate reference system (see details)}
 
-\item{shapeFile.land}{- land shapefile (if layer.land is not provided)}
-
-\item{shapeFile.bathymetry}{- bathymetry shapefile (if layer.bathym is not provided)}
-
-\item{strCRS.orig}{- string representation of original CRS (default = WGS84) used for ALL shapefiles}
-
-\item{strCRS.finl}{- string representation of final CRS (default = WGS84) used for the basemap}
-
-\item{boundingbox}{- a bounding box (see details)}
+\item{bbox}{- a bounding box (see details)}
 
 \item{colors.bg}{- background color}
 
@@ -56,13 +43,13 @@ This function creates a basemap layer for maps based on the tmap package.
 }
 \details{
 The basemap contains a land layer (polygons) and a bathymetry layer (lines).
-Uses \code{getPackagedLayer} or \code{wtsUtilities::createLayerFromShapefile} to create the
-land and bathymetric layers. If boundingbox is NULL, then the
+Uses \code{getPackagedLayer} or \code{wtsUtilities::readShapefile} to create the
+land and bathymetric layers. If \code{bbox} is NULL, then the
 bounding box for the land layer is used as the bounding box for the basemap.
 
-Bounding box options:
- 1. list with elements bottomleft and topright, each a list with elements lon and lat
- 2. an sf::bbox object (numeric vector with named elements xmin, ymin, xmax, ymax)
- 3. a matrix with rows corresponding to x and y, columns to min and max (used by the sp package)
- 4. a raster::extent object (numeric vector with named elements xmin, xmax, ymin, ymax)
+The final coordinate reference system (\code{crs.finl}) can be any object that
+can be converted to a \code{sf::crs} object using \code{get_crs}.
+
+The bounding box (\code{bbox}) can be any object that can be converted
+to a \code{sf::bbox} using \code{getBBox}.
 }

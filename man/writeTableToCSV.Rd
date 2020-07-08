@@ -12,7 +12,7 @@ writeTableToCSV(tbl, file = "table.csv")
 \item{file}{- file name}
 }
 \value{
-none
+invisible NULL
 }
 \description{
 Function to write a table (without geometry) as a csv file.

@@ -2,26 +2,25 @@
 % Please edit documentation in R/getPackagedLayer.R
 \name{getPackagedLayer}
 \alias{getPackagedLayer}
-\title{Get a spatial layer stored with this package}
+\title{Get a spatial layer (as sf dataframe) stored with this package}
 \usage{
-getPackagedLayer(layerName, as.sf = TRUE)
+getPackagedLayer(layerName)
 }
 \arguments{
 \item{layerName}{- name of layer to pull out}
-
-\item{as.sf}{- TRUE/FALSE to return dataset as an sf (TRUE) or sp (FALSE) type}
 }
 \value{
-an sf or sp dataset
+an sf dataframe
 }
 \description{
-Function to get a spatial layer stored with this package.
+Function to get a spatial layer (as sf dataframe) stored with this package.
 }
 \details{
 Possible layers to pull out are:
 \itemize{
  \item{"EBS_StationLabels"         ("ebsstationlabels.shp")}
  \item{"EBS_SurveyBlocks"          ("NMFS_EBSSurveyBlocks.shp")}
+ \item{"StandardCrabStations"      ("StandardCrabStations/StandardEBSSurveyStations_Crab.shp")}
  \item{"EBS_SurveyStations"        ("NMFS_EBSSurveyStations.PointsLL.shp")}
  \item{"EBS_SurveyStrata"          ("SurveyStrata_StandardArea.shp")}
  \item{"NBS_SurveyBlocks"          ("northern_blocks.shp")}

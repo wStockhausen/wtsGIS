@@ -18,7 +18,7 @@ writeToGISDataset(
 
 \item{driver}{- name of dataset driver (run \code{sf::st_drivers()} to see installed drivers )}
 
-\item{dsn}{- dsn for output (folder or file, depnding on output)}
+\item{dsn}{- dsn for output (folder or file, depending on output)}
 
 \item{delete_dsn}{- flag to delete the dsn before writing}
 
@@ -33,5 +33,6 @@ an invisible NULL.
 Function to write a geospatial object (e.g., an sf dataset) to a GIS dataset.
 }
 \details{
-Uses package \code{sf::st_write} or \code{rgdal::writeOGR}.
+Wrapper for functions \code{sf::st_write} for objects of class 'sf' or 'sfc' or
+\code{rgdal::writeOGR} for objects of class Spatial.
 }

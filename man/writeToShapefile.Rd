@@ -15,9 +15,9 @@ writeToShapefile(obj, file = "shapefile")
 none
 }
 \description{
-Function to write an object with geometry information( (e.g. an sf dataframe)) as a shapefile.
+Function to write an object with geometry information (e.g. an sf dataframe) as a shapefile.
 }
 \details{
-Wrapper for \code{sf::st_write(...)} or \code{rgdal::writeOGR(...)}.
+Wrapper for \code{writeToGISDataset} using "ESRI Shapefile" as the driver.
 Note that column names are limited to 10 characters max.
 }

@@ -1,22 +1,23 @@
 #'
-#' @title Union two bounding box objects
+#' @title Union two bounding boxes
 #'
-#' @description Function to union two bounding boxes
+#' @description Function to union two bounding boxes.
 #'
 #' @param bbx1 - original bounding box
 #' @param bbx2 - updating bounding box
 #'
 #' @return resulting bounding box as an sf::bbox object
 #'
-#' @details Returns a sf::bbox covering the union of the individual bounding boxes.
-#' If not sf::bbox's, the bounding boxes are converted to sf::bbox objects, then unioned.
+#' @details Returns a \code{sf::bbox} covering the union of the individual bounding boxes.
+#' If not \code{sf::bbox}'s, the bounding boxes are converted to \code{sf::bbox} objects
+#' using \code{getBBox}, then unioned.
 #'
 #' @export
 #'
 unionBBox<-function(bbx1=NULL,bbx2=NULL){
   #--convert to sf::bbox format
-  if (!is.null(bbx1)) bbx1<-convertBoundingBoxToBBox(bbx1);
-  if (!is.null(bbx2)) bbx2<-convertBoundingBoxToBBox(bbx2);
+  if (!is.null(bbx1)) bbx1<-getBBox(bbx1);
+  if (!is.null(bbx2)) bbx2<-getBBox(bbx2);
   #--handle NULL objects
   if (is.null(bbx1)) return(bbx2);
   if (is.null(bbx2)) return(bbx1);

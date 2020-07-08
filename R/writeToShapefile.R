@@ -1,15 +1,17 @@
 #'
 #' @title Write an object with geometry information as a shapefile
 #'
-#' @description Function to write an object with geometry information( (e.g. an sf dataframe)) as a shapefile.
+#' @description Function to write an object with geometry information (e.g. an sf dataframe) as a shapefile.
 #'
 #' @param obj - object with geometry information
 #' @param file - file name (default is "shapefile"; no extension is necessary)
 #'
 #' @return none
 #'
-#' @details Wrapper for \code{sf::st_write(...)} or \code{rgdal::writeOGR(...)}.
+#' @details Wrapper for \code{writeToGISDataset} using "ESRI Shapefile" as the driver.
 #' Note that column names are limited to 10 characters max.
+#'
+#' @importFrom stringi stri_sub
 #'
 #' @export
 #'

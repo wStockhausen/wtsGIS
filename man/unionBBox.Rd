@@ -2,7 +2,7 @@
 % Please edit documentation in R/unionBBox.R
 \name{unionBBox}
 \alias{unionBBox}
-\title{Union two bounding box objects}
+\title{Union two bounding boxes}
 \usage{
 unionBBox(bbx1 = NULL, bbx2 = NULL)
 }
@@ -15,9 +15,10 @@ unionBBox(bbx1 = NULL, bbx2 = NULL)
 resulting bounding box as an sf::bbox object
 }
 \description{
-Function to union two bounding boxes
+Function to union two bounding boxes.
 }
 \details{
-Returns a sf::bbox covering the union of the individual bounding boxes.
-If not sf::bbox's, the bounding boxes are converted to sf::bbox objects, then unioned.
+Returns a \code{sf::bbox} covering the union of the individual bounding boxes.
+If not \code{sf::bbox}'s, the bounding boxes are converted to \code{sf::bbox} objects
+using \code{getBBox}, then unioned.
 }

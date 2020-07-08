@@ -6,11 +6,14 @@
 #' @param tbl - table (sf, tibble, or dataframe object)
 #' @param file - file name
 #'
-#' @return none
+#' @return invisible NULL
 #'
 #' @details Requires \code{sf} package. If \code{tbl} is a
 #' \code{sf} object (i.e., with geometry information), the
 #' geometry information is dropped.
+#'
+#' @importFrom sf st_drop_geometry
+#' @importFrom utils write.csv
 #'
 #' @export
 #'
@@ -21,4 +24,5 @@ writeTableToCSV<-function(tbl,
   } else {
     utils::write.csv(tbl,file=file,row.names=FALSE);
   }
+  return(invisible(NULL));
 }
