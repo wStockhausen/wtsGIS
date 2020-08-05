@@ -10,7 +10,7 @@ createRasterLayer(
   bbox,
   nx = 500,
   ny = 500,
-  strCRS = getCRS("WGS84"),
+  strCRS = get_proj4string("WGS84"),
   linear = TRUE,
   extrap = FALSE,
   duplicate = "error"
@@ -21,7 +21,7 @@ createRasterLayer(
 
 \item{col}{- name of column in dataframe to rasterize}
 
-\item{bbox}{- tmap-style bounding box}
+\item{bbox}{- \code{sf}-style bounding box}
 
 \item{nx}{- number of cells in y direction}
 
@@ -43,4 +43,7 @@ This function creates a spatial raster layer from a dataframe and a bounding box
 }
 \details{
 Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.
+}
+\note{
+This function shiuld be revised to work with \code{sf} methods, not \code{sp} methods.
 }

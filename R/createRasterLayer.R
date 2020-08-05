@@ -5,9 +5,11 @@
 #'
 #' @details Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.
 #'
+#' @note This function shiuld be revised to work with \code{sf} methods, not \code{sp} methods.
+#'
 #' @param dfr - spatial dataframe with data to rasterize
 #' @param col - name of column in dataframe to rasterize
-#' @param bbox - tmap-style bounding box
+#' @param bbox - \code{sf}-style bounding box
 #' @param nx - number of cells in y direction
 #' @param ny - number of cells in y direction
 #' @param strCRS - string representation of CRS in PROJ4 format (default yields long/lat in WGS84)
@@ -17,6 +19,12 @@
 #'
 #' @return - raster layer
 #'
+#' @importFrom akima interp
+#' @importFrom akima interp2xyz
+#' @importFrom raster raster
+#' @importFrom sp CRS
+#' @importFrom sp SpatialPixelsDataFrame
+#'
 #' @export
 #'
 createRasterLayer<-function(dfr,
@@ -24,7 +32,7 @@ createRasterLayer<-function(dfr,
                             bbox,
                             nx=500,
                             ny=500,
-                            strCRS=getCRS("WGS84"),
+                            strCRS=get_proj4string("WGS84"),
                             linear=TRUE,
                             extrap=FALSE,
                             duplicate="error"){

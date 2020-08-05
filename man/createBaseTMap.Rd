@@ -7,7 +7,7 @@
 createBaseTMap(
   layer.land = getPackagedLayer("Alaska"),
   layer.bathym = getPackagedLayer("ShelfBathymetry"),
-  crs.finl = get_crs("WGS84"),
+  final.crs = get_crs("WGS84"),
   bbox = getStandardBBox("EBS"),
   colors.bg = "white",
   colors.land = "grey85",
@@ -21,7 +21,7 @@ createBaseTMap(
 
 \item{layer.bathym}{- a \code{sf::sf} object representing bathymetry}
 
-\item{crs.finl}{- representation of final (display) coordinate reference system (see details)}
+\item{final.crs}{- representation of final (display) coordinate reference system (see details)}
 
 \item{bbox}{- a bounding box (see details)}
 
@@ -47,7 +47,7 @@ Uses \code{getPackagedLayer} or \code{wtsUtilities::readShapefile} to create the
 land and bathymetric layers. If \code{bbox} is NULL, then the
 bounding box for the land layer is used as the bounding box for the basemap.
 
-The final coordinate reference system (\code{crs.finl}) can be any object that
+The final coordinate reference system (\code{final.crs}) can be any object that
 can be converted to a \code{sf::crs} object using \code{get_crs}.
 
 The bounding box (\code{bbox}) can be any object that can be converted
