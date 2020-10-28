@@ -20,7 +20,7 @@
 createSFC_points<-function(x,y,crs=sf::NA_crs_,wrapDateline=FALSE){
   #--create point geometries
   nr<-length(x);
-  if (wrapDateline) ifelse(x<0,360+x,x);
+  if (wrapDateline) x = ifelse(x<0,360+x,x);
   geoms<-vector(length=nr,mode="list");
   for (rw in 1:nr){
     geoms[[rw]] <- sf::st_point(x=c(x[rw],y[rw]),
