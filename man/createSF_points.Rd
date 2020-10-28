@@ -8,7 +8,8 @@ createSF_points(
   dfr,
   xCol = "longitude",
   yCol = "latitude",
-  strCRS = get_proj4string("longlat")
+  strCRS = get_proj4string("longlat"),
+  wrapDateline = FALSE
 )
 }
 \arguments{
@@ -19,6 +20,8 @@ createSF_points(
 \item{yCol}{- name of column with y coordinates (e.g., latitudes)}
 
 \item{strCRS}{- proj4string representation of a coordinate reference system}
+
+\item{wrapDateline}{- flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes}
 }
 \value{
 an sf dataframe with "geom" column appended to dfr
@@ -27,5 +30,5 @@ an sf dataframe with "geom" column appended to dfr
 Function to create an sf (simple features) dataset with point geometries.
 }
 \details{
-Uses packages \code{tibble}, \code{sf}, \code{dplyr}, \code{tmaptools}.
+Uses packages \code{tibble}, \code{sf}, \code{dplyr}.
 }

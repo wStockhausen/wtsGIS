@@ -11,6 +11,9 @@
 #' @details If \code{layer} is an object of class sf, sfc, or sfg, then \code{toCRS}
 #' should be convertible to an sf::crs object via \code{get_crs(toCRS)}.
 #'
+#' if \code{layer} is a \code{sf::bbox} object, the bbox is transformed using
+#' \code{transformBBox}.
+#'
 #' If \code{layer} is an object of class Spatial, then \code{toCRS}
 #' should be convertible to an sp::CRS object via \code{get_spCRS(toCRS)} .
 #'
@@ -24,6 +27,8 @@ transformCRS<-function(layer,toCRS){
   if (inherits(layer,c("sf","sfc","sfg"))){
     crs<-get_crs(toCRS);#--convert toCRS to crs object
     tlayer<-sf::st_transform(layer,crs);
+  } else if (inherits(layer,"bbox")){
+    tlayer<-transformBBox(layer,toCRS);
   } else if (inherits(layer,c("Spatial"))){
     CRS<-get_spCRS(toCRS);
     tlayer <- sp::spTransform(layer,CRS);
