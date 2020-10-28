@@ -2,7 +2,7 @@
 % Please edit documentation in R/createSFC_points.R
 \name{createSFC_points}
 \alias{createSFC_points}
-\title{Create an sf (simple features) column with point geometries from x,y coordinate vectors}
+\title{Create an \pkg{sf} (simple features) column with point geometries from x,y coordinate vectors}
 \usage{
 createSFC_points(x, y, crs = sf::NA_crs_, wrapDateline = FALSE)
 }
@@ -11,7 +11,7 @@ createSFC_points(x, y, crs = sf::NA_crs_, wrapDateline = FALSE)
 
 \item{y}{- vector of y coordinates}
 
-\item{crs}{- coordinate reference system (convertible to an sf crs by \code{\link{get_crrs}})}
+\item{crs}{- coordinate reference system (convertible to an sf crs by \code{\link{get_crs}})}
 
 \item{wrapDateline}{- flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes}
 }
@@ -19,7 +19,7 @@ createSFC_points(x, y, crs = sf::NA_crs_, wrapDateline = FALSE)
 an object of class sfc_POINT
 }
 \description{
-Function to create an sf column (simple features) with point geometries (i.e., an sfc_POINT object) from x,y coordinate vectors.
+Function to create an \pkg{sf} (simple features) column with point geometries (i.e., an sfc_POINT object) from x,y coordinate vectors.
 }
 \details{
 Uses package \pkg{sf}.

@@ -1,11 +1,11 @@
 #'
-#' @title Create an sf (simple features) column with point geometries from x,y coordinate vectors
+#' @title Create an \pkg{sf} (simple features) column with point geometries from x,y coordinate vectors
 #'
-#' @description Function to create an sf column (simple features) with point geometries (i.e., an sfc_POINT object) from x,y coordinate vectors.
+#' @description Function to create an \pkg{sf} (simple features) column with point geometries (i.e., an sfc_POINT object) from x,y coordinate vectors.
 #'
 #' @param x - vector of x coordinates
 #' @param y - vector of y coordinates
-#' @param crs - coordinate reference system (convertible to an sf crs by \code{\link{get_crrs}})
+#' @param crs - coordinate reference system (convertible to an sf crs by \code{\link{get_crs}})
 #' @param wrapDateline - flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes
 #'
 #' @return an object of class sfc_POINT
@@ -13,6 +13,7 @@
 #' @details Uses package \pkg{sf}.
 #'
 #' @importFrom sf st_point
+#' @importFrom sf st_sfc
 #'
 #' @export
 #'

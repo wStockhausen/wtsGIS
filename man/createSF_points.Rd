@@ -2,13 +2,13 @@
 % Please edit documentation in R/createSF_points.R
 \name{createSF_points}
 \alias{createSF_points}
-\title{Create an sf (simple features) dataset with point geometries}
+\title{Create an \pkg{sf} (simple features) dataset with point geometries}
 \usage{
 createSF_points(
   dfr,
   xCol = "longitude",
   yCol = "latitude",
-  strCRS = get_proj4string("longlat"),
+  crs = get_crs(4326),
   wrapDateline = FALSE
 )
 }
@@ -19,15 +19,15 @@ createSF_points(
 
 \item{yCol}{- name of column with y coordinates (e.g., latitudes)}
 
-\item{strCRS}{- proj4string representation of a coordinate reference system}
+\item{crs}{- a coordinate reference system object convertible to a \code{sf::crs} object using \code{\link{get_crs}}}
 
 \item{wrapDateline}{- flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes}
 }
 \value{
-an sf dataframe with "geom" column appended to dfr
+an \pkg{sf} dataframe: dfr with "geom" column appended
 }
 \description{
-Function to create an sf (simple features) dataset with point geometries.
+Function to create an \pkg{sf} (simple features) dataset with point geometries.
 }
 \details{
 Uses packages \code{tibble}, \code{sf}, \code{dplyr}.
