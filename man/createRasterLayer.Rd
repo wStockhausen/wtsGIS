@@ -2,7 +2,7 @@
 % Please edit documentation in R/createRasterLayer.R
 \name{createRasterLayer}
 \alias{createRasterLayer}
-\title{Create a spatial raster layer from a dataframe and a bounding box}
+\title{Create a \pkg{raster} spatial raster layer from a dataframe and a bounding box}
 \usage{
 createRasterLayer(
   dfr,
@@ -36,14 +36,14 @@ createRasterLayer(
 \item{duplicate}{- string passed to \code{akima::interp}}
 }
 \value{
-- raster layer
+- \pkg{raster} raster layer
 }
 \description{
-This function creates a spatial raster layer from a dataframe and a bounding box.
+This function creates a \pkg{raster} spatial raster layer from a dataframe and a bounding box.
 }
 \details{
 Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.
 }
 \note{
-This function shiuld be revised to work with \code{sf} methods, not \code{sp} methods.
+TODO: this function should be revised to work with \code{sf} methods, not \code{sp} methods.
 }

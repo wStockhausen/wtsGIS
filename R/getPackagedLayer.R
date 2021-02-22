@@ -1,11 +1,11 @@
 #'
-#' @title Get a spatial layer (as sf dataframe) stored with this package
+#' @title Get a spatial layer (as a \pkg{sf} dataframe) stored with this package
 #'
-#' @description Function to get a spatial layer (as sf dataframe) stored with this package.
+#' @description Function to get a spatial layer (as a \pkg{sf} dataframe) stored with this package.
 #'
 #' @param layerName - name of layer to pull out
 #'
-#' @return an sf dataframe
+#' @return a \pkg{sf} dataframe
 #'
 #' @details Possible layers to pull out are:
 #' \itemize{

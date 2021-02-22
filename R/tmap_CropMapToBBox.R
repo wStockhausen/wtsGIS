@@ -1,20 +1,20 @@
 #'
-#' @title Crop a map to a bounding box
+#' @title Crop a \pkg{tmap}-style map to a bounding box
 #'
-#' @description Function to crop a map to a bounding box
+#' @description Function to crop a \pkg{tmap}-style map to a bounding box
 #'
-#' @param map - tmap object
+#' @param map - \pkg{tmap}-style map object
 #' @param bbx - object convertible to a \code{sf::bbox}
 #'
-#' @return tmap object with bounding box set to projected bbox
+#' @return \pkg{tmap}-style map object with bounding box set to projected bbox
 #'
 #' @details bbx replaces the bbox on the map object. Prior to replacement,
 #' bbx is projected to the same coordinate reference system as the map.
 #'
 #' @export
 #'
-cropMapToBBox<-function(map,
-                        bbx){
+tmap_CropMapToBBox<-function(map,
+                             bbx){
   bbxp<-getBBox(bbx);#--make sure bbx is a sf::bbox object
   crs_map<-map[[1]]$projection;
   crs_bbxp<-get_crs(bbxp);

@@ -1,11 +1,11 @@
 #'
-#' @title Create a spatial raster layer from a dataframe and a bounding box
+#' @title Create a \pkg{raster} spatial raster layer from a dataframe and a bounding box
 #'
-#' @description This function creates a spatial raster layer from a dataframe and a bounding box.
+#' @description This function creates a \pkg{raster} spatial raster layer from a dataframe and a bounding box.
 #'
 #' @details Uses \code{akima::interp()}, \code{sp::SpatialPixelsDataFrame()}, and \code{raster::raster()}.
 #'
-#' @note This function shiuld be revised to work with \code{sf} methods, not \code{sp} methods.
+#' @note TODO: this function should be revised to work with \code{sf} methods, not \code{sp} methods.
 #'
 #' @param dfr - spatial dataframe with data to rasterize
 #' @param col - name of column in dataframe to rasterize
@@ -17,7 +17,7 @@
 #' @param extrap - flag passed to \code{akima::interp}
 #' @param duplicate - string passed to \code{akima::interp}
 #'
-#' @return - raster layer
+#' @return - \pkg{raster} raster layer
 #'
 #' @importFrom akima interp
 #' @importFrom akima interp2xyz

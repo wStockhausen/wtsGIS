@@ -2,7 +2,7 @@
 % Please edit documentation in R/getPackagedLayer.R
 \name{getPackagedLayer}
 \alias{getPackagedLayer}
-\title{Get a spatial layer (as sf dataframe) stored with this package}
+\title{Get a spatial layer (as a \pkg{sf} dataframe) stored with this package}
 \usage{
 getPackagedLayer(layerName)
 }
@@ -10,10 +10,10 @@ getPackagedLayer(layerName)
 \item{layerName}{- name of layer to pull out}
 }
 \value{
-an sf dataframe
+a \pkg{sf} dataframe
 }
 \description{
-Function to get a spatial layer (as sf dataframe) stored with this package.
+Function to get a spatial layer (as a \pkg{sf} dataframe) stored with this package.
 }
 \details{
 Possible layers to pull out are:

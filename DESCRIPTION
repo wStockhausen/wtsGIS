@@ -1,23 +1,25 @@
 Package: wtsGIS
 Type: Package
-Title: Functions, Rmd scripts, and datasets relating to GIS
-Version: 2020.10.28
-Date: 2020-10-28
+Title: Functions, Rmd scripts, and datasets to facilitate GIS operations
+Version: 2021.02.25
+Date: 2021-02-25
 Author: William Stockhausen
 Maintainer: William Stockhausen <william.stockhausen@noaa.gov>
-Description: Contains functions, Rmd scripts, and datasets relating to GIS.
+Description: Contains functions, Rmd scripts, and datasets to facilitate GIS operations.
 License: MIT + file LICENSE
 Depends: R (>= 3.5.0)
 Imports:
     akima (>= 0.6-2),
-    magrittr (>= 1.5),
     dplyr (>= 0.7.6),
+    ggplot2,
+    magrittr (>= 1.5),
     methods,
     raster (>= 2.6-7),
     rgdal (>= 1.4-8),
     rgeos,
     sf (>= 0.9-4),
     sp (>= 1.2-7),
+    stars,
     stringi (>= 1.4.3),
     tibble,
     tmap (>= 3.0),

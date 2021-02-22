@@ -4,7 +4,7 @@
 #' @description This function creates a basemap layer for maps based on the tmap package.
 #'
 #' @details The basemap contains a land layer (polygons) and a bathymetry layer (lines).
-#' Uses \code{getPackagedLayer} or \code{wtsUtilities::readShapefile} to create the
+#' Uses \code{\link{getPackagedLayer}} or \code{wtsUtilities::readShapefile} to create the
 #' land and bathymetric layers. If \code{bbox} is NULL, then the
 #' bounding box for the land layer is used as the bounding box for the basemap.
 #'
@@ -24,22 +24,23 @@
 #' can be converted to a \code{sf::crs} object using \code{get_crs}.
 #'
 #' The bounding box (\code{bbox}) can be any object that can be converted
-#' to a \code{sf::bbox} using \code{getBBox}.
+#' to a \code{sf::bbox} using \code{\link{getBBox}}.
 #'
 #' @import magrittr
+#' @import tmap
 #'
 #' @export
 #'
-createBaseTMap<-function( layer.land=getPackagedLayer("Alaska"),
-                          layer.bathym=getPackagedLayer("ShelfBathymetry"),
-                          final.crs=get_crs("WGS84"),
-                          bbox=getStandardBBox("EBS"),
-                          colors.bg="white",
-                          colors.land="grey85",
-                          colors.bathym="darkblue",
-                          alpha.bathym=1.0,
-                          points.size=0.01
-                          ){
+tmap_CreateBasemap<-function(layer.land=getPackagedLayer("Alaska"),
+                             layer.bathym=getPackagedLayer("ShelfBathymetry"),
+                             final.crs=get_crs("WGS84"),
+                             bbox=getStandardBBox("EBS"),
+                             colors.bg="white",
+                             colors.land="grey85",
+                             colors.bathym="darkblue",
+                             alpha.bathym=1.0,
+                             points.size=0.01
+                            ){
   #make sure final.crs is a sf::crs object
   final.crs<-get_crs(final.crs);
 
