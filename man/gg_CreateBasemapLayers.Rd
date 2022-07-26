@@ -20,17 +20,17 @@ gg_CreateBasemapLayers(
 
 \item{layer.bathym}{- a \code{sf::sf} object representing bathymetry}
 
-\item{final.crs}{- representation of final (display) coordinate reference system (see details)}
+\item{final.crs}{- object representing the final (display) coordinate reference system (see details)}
 
-\item{bbox}{- a bounding box (see details)}
+\item{bbox}{- a bounding box (see details; default is for the EBS)}
 
-\item{colors.bg}{- background color}
+\item{colors.bg}{- background color (default is "white")}
 
-\item{colors.land}{- color for land}
+\item{colors.land}{- color for land (default is "grey85")}
 
-\item{colors.bathym}{- color for the bathymetry}
+\item{colors.bathym}{- color for the bathymetry (default is "darkblue")}
 
-\item{alpha.bathym}{- transparency for the bathymetry}
+\item{alpha.bathym}{- transparency for the bathymetry (default is 1)}
 }
 \value{
 - basemap layer based on the \pkg{ggplot2} package
@@ -49,4 +49,13 @@ can be converted to a \code{sf::crs} object using \code{\link{get_crs}}.
 
 The bounding box (\code{bbox}) can be any object that can be converted
 to a \code{sf::bbox} using \code{\link{getBBox}}.
+
+layer.land and layer.bathym will first be transformed to the bounding box coordinates
+and cropped to the bounding box. All three will then be converted to the final.crs
+coordinate system.
+
+If the bounding box is NULL, it will be created from the bounding box for
+layer.land (if not NULL) or layer.bathym (if layer.land is NULL.
+
+If final.crs is NULL, it will be set to the CRS for the bounding box.
 }

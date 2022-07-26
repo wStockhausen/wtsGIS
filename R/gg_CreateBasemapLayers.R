@@ -10,12 +10,12 @@
 #'
 #' @param layer.land - a \code{sf::sf} object representing land
 #' @param layer.bathym - a \code{sf::sf} object representing bathymetry
-#' @param final.crs - representation of final (display) coordinate reference system (see details)
-#' @param bbox - a bounding box (see details)
-#' @param colors.bg - background color
-#' @param colors.land - color for land
-#' @param colors.bathym - color for the bathymetry
-#' @param alpha.bathym - transparency for the bathymetry
+#' @param final.crs - object representing the final (display) coordinate reference system (see details)
+#' @param bbox - a bounding box (see details; default is for the EBS)
+#' @param colors.bg - background color (default is "white")
+#' @param colors.land - color for land (default is "grey85")
+#' @param colors.bathym - color for the bathymetry (default is "darkblue")
+#' @param alpha.bathym - transparency for the bathymetry (default is 1)
 #'
 #' @return - basemap layer based on the \pkg{ggplot2} package
 #'
@@ -25,8 +25,17 @@
 #' The bounding box (\code{bbox}) can be any object that can be converted
 #' to a \code{sf::bbox} using \code{\link{getBBox}}.
 #'
+#' layer.land and layer.bathym will first be transformed to the bounding box coordinates
+#' and cropped to the bounding box. All three will then be converted to the final.crs
+#' coordinate system.
+#'
+#' If the bounding box is NULL, it will be created from the bounding box for
+#' layer.land (if not NULL) or layer.bathym (if layer.land is NULL.
+#'
+#' If final.crs is NULL, it will be set to the CRS for the bounding box.
+#'
 #' @import magrittr
-#' @import tmap
+#' @import ggplot2
 #'
 #' @export
 #'
@@ -39,36 +48,39 @@ gg_CreateBasemapLayers = function(layer.land=getPackagedLayer("Alaska"),
                                  colors.bathym="darkblue",
                                  alpha.bathym=1.0){
 
-  #make sure final.crs is a sf::crs object
-  final.crs = get_crs(final.crs);
+  #make sure final.crs is a sf::crs object, it is not NULL
+  if (!is.null(final.crs)) final.crs = wtsGIS::get_crs(final.crs);
 
-  land = layer.land;
-  if (!is.null(final.crs)) land  =  transformCRS(land,final.crs);
-
-  #define bounding box for map extent
-  if (is.null(bbox)) {
-    bbox = getBBox(land);#--no bbox, so use extent of land
-  } else {
-    bbox = getBBox(bbox);#--use bbox
-    #--make sure bbox is is same crs as land
-    crs_land = get_crs(land);
-    if (crs_land!=get_crs(bbox)) bbox = transformBBox(bbox,crs_land);
+  lyr_land = NULL;
+  if (!is.null(layer.land)){
+    if (is.null(bbox))      bbox      = wtsGIS::getBBox(layer.land);
+    if (is.null(final.crs)) final.crs = wtsGIS::get_crs(bbox);
+    land = layer.land %>%
+              sf::st_transform(wtsGIS::get_crs(bbox)) %>%  #--transform into bbox coordinates
+              wtsGIS::cropFeaturesToBBox(bbox) %>%         #--crop to features to bbox
+              sf::st_transform(final.crs);                 #--transform to final crs
+    lyr_land = ggplot2::geom_sf(data=land,fill=colors.land,colour=NA,inherit.aes=FALSE);
   }
-
-  lyr_land = ggplot2::geom_sf(data=land,fill=colors.land,colour=NA,inherit.aes=FALSE);
 
   #--create bathymetry layer
   lyr_bathym=NULL;
   if (!is.null(layer.bathym)){
-    bathym = layer.bathym;
-    if (!is.null(final.crs)) bathym  =  transformCRS(bathym,final.crs);
+    if (is.null(bbox))       bbox      = wtsGIS::getBBox(layer.bathym);
+    if (is.null(final.crs))  final.crs = wtsGIS::get_crs(bbox);
+    bathym = layer.bathym %>%
+              sf::st_transform(wtsGIS::get_crs(bbox)) %>%  #--transform into bbox coordinates
+              wtsGIS::cropFeaturesToBBox(bbox) %>%         #--crop to features to bbox
+              sf::st_transform(final.crs);                 #--transform to final crs
     lyr_bathym  = ggplot2::geom_sf(data=bathym,colour=colors.bathym,alpha=alpha.bathym,inherit.aes=FALSE);
   }
+
+  bbox %<>% wtsGIS::transformBBox(final.crs);#--now transform bbox to final.crs
 
   #--define coordinate scale for default basemap
   map_scale = ggplot2::coord_sf(xlim=c(bbox["xmin"],bbox["xmax"]),
                                 ylim=c(bbox["ymin"],bbox["ymax"]),
-                                crs=wtsGIS::get_crs(bbox),
+                                crs=final.crs,
+                                default_crs=final.crs,
                                 expand=FALSE,
                                 clip="on",
                                 default=TRUE);
@@ -76,11 +88,13 @@ gg_CreateBasemapLayers = function(layer.land=getPackagedLayer("Alaska"),
   #--define theme
   #----define aspect ratio for panels
   asp = NULL; #--let ggplot2 work it out
-  if (!st_is_longlat(bbox)) asp = (bbox["ymax"]-bbox["ymin"])/(bbox["xmax"]-bbox["xmin"]);
+  if (!sf::st_is_longlat(bbox)) asp = (bbox["ymax"]-bbox["ymin"])/(bbox["xmax"]-bbox["xmin"]);
   #----remove axis titles (necessary when connectivity zone labels are included in map)
   theme = ggplot2::theme(axis.title.x = ggplot2::element_blank(),
                          axis.title.y = ggplot2::element_blank(),
-                         plot.background = ggplot2::element_rect(fill=colors.bg),
+                         plot.background = ggplot2::element_rect(colour=NA,fill=colors.bg),
+                         panel.background=element_blank(),
+                         panel.border=element_rect(colour="black",fill=NA),
                          panel.spacing = grid::unit(0.05,"cm"),
                          aspect.ratio=asp);
   return(list(bathym=lyr_bathym,land=lyr_land,map_scale=map_scale,theme=theme));
