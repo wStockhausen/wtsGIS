@@ -48,8 +48,20 @@ gg_CreateBasemapLayers = function(layer.land=getPackagedLayer("Alaska"),
                                  colors.bathym="darkblue",
                                  alpha.bathym=1.0){
 
-  #make sure final.crs is a sf::crs object, it is not NULL
+  #make sure final.crs is a sf::crs object, if it is not NULL
   if (!is.null(final.crs)) final.crs = wtsGIS::get_crs(final.crs);
+
+  #--if bbox is not NULL...
+  if (!is.null(bbox)) {
+      crs = wtsGIS::get_crs(bbox);
+      if (!is.na(crs)){
+          #--bbox crs is defined, so if final.crs is NULL, set final.crs to crs
+          if (is.null(final.crs)) final.crs=crs;
+      } else {
+          #--bbox crs is not defined, but if presumed same as final.crs if it is not NULL
+          if (!is.null(final.crs)) bbox %<>% sf::st_set_crs(final.crs);
+      }
+  }
 
   lyr_land = NULL;
   if (!is.null(layer.land)){
@@ -80,7 +92,6 @@ gg_CreateBasemapLayers = function(layer.land=getPackagedLayer("Alaska"),
   map_scale = ggplot2::coord_sf(xlim=c(bbox["xmin"],bbox["xmax"]),
                                 ylim=c(bbox["ymin"],bbox["ymax"]),
                                 crs=final.crs,
-                                default_crs=final.crs,
                                 expand=FALSE,
                                 clip="on",
                                 default=TRUE);
