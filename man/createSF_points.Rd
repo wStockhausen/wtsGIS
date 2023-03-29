@@ -13,15 +13,25 @@ createSF_points(
 )
 }
 \arguments{
-\item{dfr}{- dataframe with columns for x,y coordinates for points}
+\item{dfr}{\itemize{
+\item dataframe with columns for x,y coordinates for points
+}}
 
-\item{xCol}{- name of column with x coordinates (e.g., longitudes)}
+\item{xCol}{\itemize{
+\item name of column with x coordinates (e.g., longitudes)
+}}
 
-\item{yCol}{- name of column with y coordinates (e.g., latitudes)}
+\item{yCol}{\itemize{
+\item name of column with y coordinates (e.g., latitudes)
+}}
 
-\item{crs}{- a coordinate reference system object convertible to a \code{sf::crs} object using \code{\link{get_crs}}}
+\item{crs}{\itemize{
+\item a coordinate reference system object convertible to a \code{sf::crs} object using \code{\link{get_crs}}
+}}
 
-\item{wrapDateline}{- flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes}
+\item{wrapDateline}{\itemize{
+\item flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes
+}}
 }
 \value{
 an \pkg{sf} dataframe: dfr with "geom" column appended

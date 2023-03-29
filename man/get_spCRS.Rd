@@ -7,7 +7,9 @@
 get_spCRS(x)
 }
 \arguments{
-\item{x}{- see details}
+\item{x}{\itemize{
+\item see details
+}}
 }
 \value{
 a sp::CRS object or NULL if \code{x} is NULL

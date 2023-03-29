@@ -7,24 +7,28 @@
 readShapefile(file, crs = NULL)
 }
 \arguments{
-\item{file}{- shapefile to read}
+\item{file}{\itemize{
+\item shapefile to read
+}}
 
-\item{crs}{- an \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system [or NULL to keep the original]}
+\item{crs}{\itemize{
+\item an \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system (or NULL to keep the original)
+}}
 }
 \value{
 a \code{sf::sf} data.frame.
 }
 \description{
-This function reads a shapefile and creates a \code{sf} spatial dataframe object.
+This function reads a shapefile and creates a \pkg{sf} spatial dataframe object.
 }
 \details{
-The function uses \code{sf::st_read} to read the shapefile.
+The function uses \code{\link[sf:st_read]{sf::st_read()}} to read the shapefile.
 If \code{crs} is NULL, the coordinate reference system for the shapefile is unchanged.
 
 If the shapefile did not have a coordinate reference system originally associated with it, then
-\code{crs} is used to **set** the \code{sf} object's coordinate reference system.
+\code{crs} is used to \strong{set} the \code{sf} object's coordinate reference system.
 
 If the shapefile has a coordinate reference system associated with it,
-\code{wtsGIS::transformCRS} is used to **transform/project** the \code{sf} object
+\code{\link[=transformCRS]{transformCRS()}} is used to \strong{transform/project} the \code{sf} object
 to that represented by \code{crs}
 }

@@ -7,15 +7,15 @@
 \method{makeContent}{vector}(x)
 }
 \arguments{
-\item{x}{- a vectorGrob}
+\item{x}{: a vectorGrob}
 }
 \value{
-a grid grob or gTree
+a grid grob or gTree with class \code{polyline}.
 }
 \description{
 Function to make content for a vectorGrob object.
 }
 \details{
 This function will be used by grid.draw when called on a vectorGrob. It
-provides a specific implementation for the generic grid::makeContent(x).
+provides a specific implementation for the generic \code{\link[grid:makeContent]{grid::makeContent()}}.
 }

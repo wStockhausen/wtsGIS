@@ -7,9 +7,13 @@
 writeTableToCSV(tbl, file = "table.csv")
 }
 \arguments{
-\item{tbl}{- table (sf, tibble, or dataframe object)}
+\item{tbl}{\itemize{
+\item table (sf, tibble, or dataframe object)
+}}
 
-\item{file}{- file name}
+\item{file}{\itemize{
+\item file name
+}}
 }
 \value{
 invisible NULL

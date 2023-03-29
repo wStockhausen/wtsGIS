@@ -7,9 +7,13 @@
 transformCRS(layer, toCRS)
 }
 \arguments{
-\item{layer}{- spatial data layer to transform}
+\item{layer}{\itemize{
+\item spatial data layer to transform
+}}
 
-\item{toCRS}{- representation of final coordinate reference system (see @details)}
+\item{toCRS}{\itemize{
+\item representation of final coordinate reference system (see @details)
+}}
 }
 \value{
 spatial layer of same type as input (sf or sp)

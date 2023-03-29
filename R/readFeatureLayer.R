@@ -7,7 +7,7 @@
 #' @param dsn -data source name (interpretation varies by driver)
 #' @param layer - feature layer to read (interpretation varies by driver)
 #' @param drivers - RGDAL drivers to use to read feature class (limited set of short names of drivers to try; default is to try all)
-#' @param crs - a \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system [or NULL to keep the original]
+#' @param crs - a \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system (or NULL to keep the original)
 #'
 #' @return a \code{sf::sf} data.frame.
 #'

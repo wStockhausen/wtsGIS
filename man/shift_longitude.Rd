@@ -7,7 +7,9 @@
 shift_longitude(obj)
 }
 \arguments{
-\item{obj}{- object to shift coordinates}
+\item{obj}{\itemize{
+\item object to shift coordinates
+}}
 }
 \value{
 object of same class as obj, but with longitudes shifted

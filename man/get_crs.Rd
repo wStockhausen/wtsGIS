@@ -7,7 +7,9 @@
 get_crs(x)
 }
 \arguments{
-\item{x}{- see details}
+\item{x}{\itemize{
+\item see details
+}}
 }
 \value{
 object of class \code{sf::crs} or NULL if \code{x} is NULL

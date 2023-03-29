@@ -15,22 +15,38 @@ mergeDataframeWithLayer(
 )
 }
 \arguments{
-\item{dfr}{- dataframe to merge}
+\item{dfr}{\itemize{
+\item dataframe to merge
+}}
 
-\item{geoms}{- geometries to merge with}
+\item{geoms}{\itemize{
+\item geometries to merge with
+}}
 
-\item{dataID}{- name of id column in dataframe to join on}
+\item{dataID}{\itemize{
+\item name of id column in dataframe to join on
+}}
 
-\item{geomsID}{- name of id column in geometry layer to join on}
+\item{geomsID}{\itemize{
+\item name of id column in geometry layer to join on
+}}
 
-\item{sfJoinType}{- join type (dfr to geoms) for sf-like geometries}
+\item{sfJoinType}{\itemize{
+\item join type (dfr to geoms) for sf-like geometries
+}}
 
-\item{spAllData}{- flag to merge all rows from dataframe with sp-like geometries}
+\item{spAllData}{\itemize{
+\item flag to merge all rows from dataframe with sp-like geometries
+}}
 
-\item{spDuplicateGeoms}{- allow sp-like geoms to be duplicated (i.e., where multiple rows in dataframe maatch a single geom)}
+\item{spDuplicateGeoms}{\itemize{
+\item allow sp-like geoms to be duplicated (i.e., where multiple rows in dataframe maatch a single geom)
+}}
 }
 \value{
-- sf or sp dataframe (depending on the class of the geoms object).
+\itemize{
+\item sf or sp dataframe (depending on the class of the geoms object).
+}
 }
 \description{
 This function merges (joins) a dataset with (to) a geometry layer.
@@ -40,15 +56,13 @@ Uses packages \code{dplyr}, \code{sf} and \code{sp}.
 If geoms is an sp dataset, the merge is conducted using \code{sp:merge}.
 If geoms is an sf dataset, it is conducted using one of the join functions
 in package \code{dplyr}. The results of this join will depend on the join type:
+\itemize{
+\item right join: matched rows in \code{dfr},         all rows in \code{geoms}
+\item left join:      all rows in \code{dfr},     matched rows in \code{geoms}
+\item inner join: only rows in \code{dfr} matched to \code{geoms}
+\item full join:  all rows in \code{dfr} and all rows in \code{geoms}
+}
 
- - right join: matched rows in \code{dfr},         all rows in \code{geoms}
-
- - left join:      all rows in \code{dfr},     matched rows in \code{geoms}
-
- - inner join: only rows in \code{dfr} matched to \code{geoms}
-
- - full join:  all rows in \code{dfr} and all rows in \code{geoms}
-
-The join column will take its name from \code{dataID} in \code{dfr} and will *not* include
+The join column will take its name from \code{dataID} in \code{dfr} and will \emph{not} include
 a column named \code{geomsID}.
 }

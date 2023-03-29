@@ -7,9 +7,13 @@
 transformBBox(bbx, crs)
 }
 \arguments{
-\item{bbx}{- object convertible to a \code{sf::bbox}}
+\item{bbx}{\itemize{
+\item object convertible to a \code{sf::bbox}
+}}
 
-\item{crs}{- the output coordinate reference system (see @details)}
+\item{crs}{\itemize{
+\item the output coordinate reference system (see @details)
+}}
 }
 \value{
 the transformed bounding box in the specifed crs

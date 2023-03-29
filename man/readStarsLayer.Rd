@@ -7,11 +7,17 @@
 readStarsLayer(dsns, driver = character(0), curvilinear = character(0))
 }
 \arguments{
-\item{dsns}{- data source(s) name (interpretation varies by driver)}
+\item{dsns}{\itemize{
+\item data source(s) name (interpretation varies by driver)
+}}
 
-\item{driver}{- (optional) RGDAL driver to use to read raster layer}
+\item{driver}{\itemize{
+\item (optional) RGDAL driver to use to read raster layer
+}}
 
-\item{curvilinear}{- (optional) length two character vector with names of sub-datasets holding longitude and latitude values for all raster cells}
+\item{curvilinear}{\itemize{
+\item (optional) length two character vector with names of sub-datasets holding longitude and latitude values for all raster cells
+}}
 }
 \value{
 a \pkg{stars} object.

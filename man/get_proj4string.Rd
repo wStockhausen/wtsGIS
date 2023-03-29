@@ -7,7 +7,9 @@
 get_proj4string(x)
 }
 \arguments{
-\item{x}{- see details}
+\item{x}{\itemize{
+\item see details
+}}
 }
 \value{
 a PROJ4 string or NULL if \code{x} is NULL

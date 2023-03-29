@@ -7,7 +7,19 @@
 arrowGrob(x, y, angle, length, pivot, default.units = "npc", ...)
 }
 \arguments{
-\item{default.units}{}
+\item{x}{: x-axis location of base (passed on to \code{\link[grid:grid.grob]{grid::grob()}})}
+
+\item{y}{: y-axis location of base (passed on to \code{\link[grid:grid.grob]{grid::grob()}})}
+
+\item{angle}{: angle of shaft  (passed on to \code{\link[grid:grid.grob]{grid::grob()}})}
+
+\item{length}{: length of shaft  (passed on to \code{\link[grid:grid.grob]{grid::grob()}})}
+
+\item{pivot}{:  passed on to \code{\link[grid:grid.grob]{grid::grob()}}}
+
+\item{default.units}{: (passed on to \code{\link[grid:grid.grob]{grid::grob()}})}
+
+\item{...}{: passed on to \code{\link[grid:grid.grob]{grid::grob()}}}
 }
 \value{
 a \pkg{grid} grob.
@@ -17,5 +29,5 @@ Function to create a grob representing an arrow.
 }
 \details{
 Code stolen from from Elio Campitelli (https://github.com/eliocamp/metR) and adapted
-by WTS.
+by WTS. Uses \code{\link[grid:grid.grob]{grid::grob()}} with \code{cl="arrow2"}.
 }

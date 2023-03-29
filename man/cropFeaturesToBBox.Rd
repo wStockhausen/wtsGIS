@@ -7,12 +7,18 @@
 cropFeaturesToBBox(obj, bbx)
 }
 \arguments{
-\item{obj}{- object of class "sf" or "sfc"}
+\item{obj}{\itemize{
+\item object of class "sf" or "sfc"
+}}
 
-\item{bbx}{- object that can be converted to a sf:bbox (see details)}
+\item{bbx}{\itemize{
+\item object that can be converted to a sf:bbox (see details)
+}}
 }
 \value{
-- object of same type as \code{obj}, but cropped to the bbox limits
+\itemize{
+\item object of same type as \code{obj}, but cropped to the bbox limits
+}
 }
 \description{
 Function to crop features (a \code{sf::sf} or \code{sf::sfc} object) to a bounding box.

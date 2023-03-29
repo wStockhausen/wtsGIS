@@ -7,9 +7,13 @@
 writeToShapefile(obj, file = "shapefile")
 }
 \arguments{
-\item{obj}{- object with geometry information}
+\item{obj}{\itemize{
+\item object with geometry information
+}}
 
-\item{file}{- file name (default is "shapefile"; no extension is necessary)}
+\item{file}{\itemize{
+\item file name (default is "shapefile"; no extension is necessary)
+}}
 }
 \value{
 none

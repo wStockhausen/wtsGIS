@@ -7,7 +7,9 @@
 get_epsg(x)
 }
 \arguments{
-\item{x}{- see details}
+\item{x}{\itemize{
+\item see details
+}}
 }
 \value{
 an EPSG number or NULL if \code{x} is NULL

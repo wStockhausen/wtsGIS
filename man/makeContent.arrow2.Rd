@@ -7,7 +7,7 @@
 \method{makeContent}{arrow2}(x)
 }
 \arguments{
-\item{x}{- a grid grob}
+\item{x}{: a grid grob}
 }
 \value{
 a grid grob or gTree
@@ -17,5 +17,5 @@ Function to make content for an arrow.
 }
 \details{
 This function will be used by grid.draw when called on an arrowGrob. It
-provides a specific implementation for the generic grid::makeContent(x).
+provides a specific implementation for the generic \code{\link[grid:makeContent]{grid::makeContent()}}.
 }

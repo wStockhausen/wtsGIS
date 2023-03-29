@@ -9,11 +9,17 @@ readFeatureLayer(dsn, layer, drivers = character(0), crs = NULL)
 \arguments{
 \item{dsn}{-data source name (interpretation varies by driver)}
 
-\item{layer}{- feature layer to read (interpretation varies by driver)}
+\item{layer}{\itemize{
+\item feature layer to read (interpretation varies by driver)
+}}
 
-\item{drivers}{- RGDAL drivers to use to read feature class (limited set of short names of drivers to try; default is to try all)}
+\item{drivers}{\itemize{
+\item RGDAL drivers to use to read feature class (limited set of short names of drivers to try; default is to try all)
+}}
 
-\item{crs}{- a \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system [or NULL to keep the original]}
+\item{crs}{\itemize{
+\item a \code{sf::crs} object, EPSG code, or string describing the output coordinate reference system (or NULL to keep the original)
+}}
 }
 \value{
 a \code{sf::sf} data.frame.
@@ -28,9 +34,9 @@ If \code{crs} is NULL, the coordinate reference system for the layer is unchange
 to it.
 
 If the layer did not have a coordinate reference system originally associated with it, then
-\code{crs} is used to **set** the \code{sf} object's coordinate reference system.
+\code{crs} is used to \strong{set} the \code{sf} object's coordinate reference system.
 
 If the layer has a coordinate reference system associated with it,
-\code{wtsGIS::transformCRS} is used to **transform/project** the \code{sf} object
+\code{wtsGIS::transformCRS} is used to \strong{transform/project} the \code{sf} object
 to that represented by \code{crs}
 }

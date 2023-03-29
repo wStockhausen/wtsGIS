@@ -26,8 +26,8 @@ geom_arrow(
   arrow.length = 0.5,
   arrow.ends = "last",
   arrow.type = "closed",
-  arrow = grid::arrow(arrow.angle, grid::unit(arrow.length, "lines"), ends =
-    arrow.ends, type = arrow.type),
+  arrow = grid::arrow(arrow.angle, grid::unit(arrow.length, "lines"), ends = arrow.ends,
+    type = arrow.type),
   lineend = "butt",
   na.rm = FALSE,
   show.legend = NA,
@@ -52,8 +52,8 @@ geom_vector(
   arrow.length = 0.5,
   arrow.ends = "last",
   arrow.type = "closed",
-  arrow = grid::arrow(arrow.angle, grid::unit(arrow.length, "lines"), ends =
-    arrow.ends, type = arrow.type),
+  arrow = grid::arrow(arrow.angle, grid::unit(arrow.length, "lines"), ends = arrow.ends,
+    type = arrow.type),
   lineend = "butt",
   na.rm = FALSE,
   show.legend = NA,
@@ -61,10 +61,10 @@ geom_vector(
 )
 }
 \arguments{
-\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{aes()}} or
-\code{\link[ggplot2:aes_]{aes_()}}. If specified and \code{inherit.aes = TRUE} (the
-default), it is combined with the default mapping at the top level of the
-plot. You must supply \code{mapping} if there is no plot mapping.}
+\item{mapping}{Set of aesthetic mappings created by \code{\link[ggplot2:aes]{aes()}}. If specified and
+\code{inherit.aes = TRUE} (the default), it is combined with the default mapping
+at the top level of the plot. You must supply \code{mapping} if there is no plot
+mapping.}
 
 \item{data}{The data to be displayed in this layer. There are three
 options:
@@ -82,10 +82,14 @@ will be used as the layer data. A \code{function} can be created
 from a \code{formula} (e.g. \code{~ head(.x, 10)}).}
 
 \item{stat}{The statistical transformation to use on the data for this
-layer, as a string.}
+layer, either as a \code{ggproto} \code{Geom} subclass or as a string naming the
+stat stripped of the \code{stat_} prefix (e.g. \code{"count"} rather than
+\code{"stat_count"})}
 
-\item{position}{Position adjustment, either as a string, or the result of
-a call to a position adjustment function.}
+\item{position}{Position adjustment, either as a string naming the adjustment
+(e.g. \code{"jitter"} to use \code{position_jitter}), or the result of a call to a
+position adjustment function. Use the latter if you need to change the
+settings of the adjustment.}
 
 \item{...}{Other arguments passed on to \code{\link[ggplot2:layer]{layer()}}. These are
 often aesthetics, used to set an aesthetic to a fixed value, like
@@ -107,9 +111,9 @@ beginning and 1 means at the end.}
 in the x and y direction}
 
 \item{arrow.length, arrow.angle, arrow.ends, arrow.type}{parameters passed to
-[grid::arrow]}
+\link[grid:arrow]{grid::arrow}}
 
-\item{arrow}{specification for arrow heads, as created by arrow().}
+\item{arrow}{specification for arrow heads, as created by \code{\link[grid:arrow]{grid::arrow()}}.}
 
 \item{lineend}{Line end style (round, butt, square).}
 
@@ -128,27 +132,27 @@ that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
 \description{
-Parametrization of [ggplot2::geom_segment] either by location and displacement
-or by magnitude and angle with default arrows. `geom_arrow()` is the same as
-`geom_vector()` but defaults to preserving the direction under coordinate
+Parametrization of \link[ggplot2:geom_segment]{ggplot2::geom_segment} either by location and displacement
+or by magnitude and angle with default arrows. \code{geom_arrow()} is the same as
+\code{geom_vector()} but defaults to preserving the direction under coordinate
 transformation and different plot ratios.
 }
 \details{
 Direction and start allows one to work with different standards. For the
-meteorological standards, for example, one would use `start = -90` and `direction = "cw"`.
-whereas for oceanographic standards one would use `start = 0` and `direction = "ccw"`.
+meteorological standards, for example, one would use \code{start = -90} and \code{direction = "cw"}.
+whereas for oceanographic standards one would use \code{start = 0} and \code{direction = "ccw"}.
 
-Non-default values for `skip` (and `skip.x`, `skip.y`; default=0) should only be used with
+Non-default values for \code{skip} (and \code{skip.x}, \code{skip.y}; default=0) should only be used with
 x, y values on a rectangular grid(lat/lon or x,y).
 }
 \section{Aesthetics}{
 
-`geom_vector` understands the following aesthetics (required aesthetics are in bold)
+\code{geom_vector} understands the following aesthetics (required aesthetics are in bold)
 
 \itemize{
-\item **x**
-\item **y**
-\item either **mag** and **angle**, or **dx** and **dy**
+\item \strong{x}
+\item \strong{y}
+\item either \strong{mag} and \strong{angle}, or \strong{dx} and \strong{dy}
 \item \code{alpha}
 \item \code{colour}
 \item \code{linetype}

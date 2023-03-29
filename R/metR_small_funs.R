@@ -1,9 +1,9 @@
-#' Anomalies
+#' @title Anomalies
 #'
-#' Saves keystrokes for computing anomalies.
+#' @description Saves keystrokes for computing anomalies.
 #'
-#' @param x numeric vector
-#' @param baseline logical or numerical vector used for subsetting x before
+#' @param x : numeric vector
+#' @param baseline : logical or numerical vector used for subsetting x before
 #' computing the mean
 #' @param ... other arguments passed to \code{\link{mean}} such as `na.rm`
 #'
@@ -12,9 +12,10 @@
 #' mean.
 #'
 #' @examples
-#' # Zonal temperature anomaly
-#' library(data.table)
-#' temperature[, .(lon = lon, air.z = Anomaly(air)), by = .(lat, lev)]
+#' ##--not run
+#' ##Zonal temperature anomaly
+#' #library(data.table)
+#' #temperature[, .(lon = lon, air.z = Anomaly(air)), by = .(lat, lev)]
 #'
 #' @family utilities
 #' @export
@@ -37,6 +38,7 @@ Anomaly <- function(x, baseline = seq_along(x), ...) {
 #' p <- Percentile(x)
 #'
 #' @family utilities
+#' @importFrom stats ecdf
 #' @export
 Percentile <- function(x) {
     ecdf(x)(x)
@@ -66,7 +68,7 @@ Percentile <- function(x) {
 #' Mag(10, 10, 10, 10)
 #' Mag(list(10, 10, 10, 10))
 #'
-#' # There's no vector recicling!
+#' # There's no vector recycling!
 #' \dontrun{
 #' Mag(1, 1:2)
 #' }
@@ -114,14 +116,15 @@ Angle <- function(x, y) {
 #' x <- rnorm(100)
 #' x[x %~% c(0.3, 0.5, 1)]
 #'
-#' # Practical use case: vertical cross-section at
-#' # approximately 36W between 50S and 50N.
-#' cross.lon <- -34 + 360
-#' library(ggplot2)
-#' library(data.table)
-#' ggplot(temperature[lon %~% cross.lon & lat %between% c(-50, 50)],
-#'        aes(lat, lev)) +
-#'     geom_contour(aes(z = air))
+#' ##--not run
+#' ## Practical use case: vertical cross-section at
+#' ## approximately 36W between 50S and 50N.
+#' # cross.lon <- -34 + 360
+#' # library(ggplot2)
+#' # library(data.table)
+#' # ggplot(temperature[lon %~% cross.lon & lat %between% c(-50, 50)],
+#' #        aes(lat, lev)) +
+#' #     geom_contour(aes(z = air))
 #'
 #' @family utilities
 #' @name logic
@@ -195,17 +198,6 @@ JumpBy <- function(x, by, start = 1, fill = NULL) {
 #' #' @param dlon,dlat interval in degrees
 #' #' @param lat latitude, in degrees
 #' #' @param a radius of the Earth
-#' #'
-#' #' @examples
-#' #'
-#' #' library(data.table)
-#' #' data(geopotential)
-#' #' geopotential <- geopotential[date == date[1]]
-#' #'
-#' #' # Geostrophic wind
-#' #' geopotential[, c("u", "v") := GeostrophicWind(gh, lon, lat)]  # in meters/second
-#' #' geopotential[, c("dlon", "dlat") := .(dlon(u, lat), dlat(v))] # in degrees/second
-#' #' geopotential[, c("u2", "v2") := .(dx(dlon, lat), dy(dlat))]   # again in degrees/second
 #' #'
 #' #' @name spherical
 #' #' @export

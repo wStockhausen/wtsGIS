@@ -7,10 +7,14 @@
 getStandardBBox(area = c("EBS", "CGOA"))
 }
 \arguments{
-\item{area}{- area to return the bounding box for ("EBS","CGOA")}
+\item{area}{\itemize{
+\item area to return the bounding box for ("EBS","CGOA")
+}}
 }
 \value{
-- bounding box in list format
+\itemize{
+\item bounding box in list format
+}
 }
 \description{
 This function \code{sf::bbox} for a standard map area.

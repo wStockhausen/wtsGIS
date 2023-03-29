@@ -7,9 +7,13 @@
 getBBox(obj, crs = NULL)
 }
 \arguments{
-\item{obj}{- an object that can be converted to a bbox, or from which one can be extracted}
+\item{obj}{\itemize{
+\item an object that can be converted to a bbox, or from which one can be extracted
+}}
 
-\item{crs}{- an object that can be converted to a sf::crs object using \code{get_crs(crs)}}
+\item{crs}{\itemize{
+\item an object that can be converted to a sf::crs object using \code{get_crs(crs)}
+}}
 }
 \value{
 a sf::bbox object (numeric vector of class "bbox" with xmin, ymin, xmax, ymax and a sf::crs as an attribute)
@@ -20,10 +24,10 @@ Function to get a sf::bbox object based on another object.
 \details{
 obj=NULL returns a bbox for the Earth in degrees, with WGS84 as crs. Otherwise, obj can be:
 \itemize{
-  \item{a 4-element vector with values xmin, ymin, xmax, ymax}
-  \item{a 2x2 matrix with xmin, ymin on first row, xmax, ymax on second row}
-  \item{a list with sub-list elements \code{bottomleft=c(xmin,ymin)} and \code{topright=c(xmax,ymax)}}
-  \item{an object on which \code{sf::st_bbox(obj)} can be called}
+\item{a 4-element vector with values xmin, ymin, xmax, ymax}
+\item{a 2x2 matrix with xmin, ymin on first row, xmax, ymax on second row}
+\item{a list with sub-list elements \code{bottomleft=c(xmin,ymin)} and \code{topright=c(xmax,ymax)}}
+\item{an object on which \code{sf::st_bbox(obj)} can be called}
 }
 
 \code{crs} is ignored unless obj is a vector, matrix or a list; it is taken directly from \code{obj}.

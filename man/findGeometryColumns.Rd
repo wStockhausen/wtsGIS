@@ -7,9 +7,13 @@
 findGeometryColumns(sf_dfr, verbose = FALSE)
 }
 \arguments{
-\item{sf_dfr}{- dataframe for which to determine the names of the geometry column(s)}
+\item{sf_dfr}{\itemize{
+\item dataframe for which to determine the names of the geometry column(s)
+}}
 
-\item{verbose}{- flag to print diagnostic info}
+\item{verbose}{\itemize{
+\item flag to print diagnostic info
+}}
 }
 \value{
 vector of column names

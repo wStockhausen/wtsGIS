@@ -7,7 +7,9 @@
 listFeatureLayers(dsn)
 }
 \arguments{
-\item{dsn}{- data source name (interpretation varies by driver)}
+\item{dsn}{\itemize{
+\item data source name (interpretation varies by driver)
+}}
 }
 \value{
 a named list by layer with sub-lists as elements which have

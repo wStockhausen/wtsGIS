@@ -7,9 +7,13 @@
 tmap_CropMapToBBox(map, bbx)
 }
 \arguments{
-\item{map}{- \pkg{tmap}-style map object}
+\item{map}{\itemize{
+\item \pkg{tmap}-style map object
+}}
 
-\item{bbx}{- object convertible to a \code{sf::bbox}}
+\item{bbx}{\itemize{
+\item object convertible to a \code{sf::bbox}
+}}
 }
 \value{
 \pkg{tmap}-style map object with bounding box set to projected bbox

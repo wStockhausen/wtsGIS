@@ -7,7 +7,9 @@
 getActiveGeometryColumnName(sf_dfr)
 }
 \arguments{
-\item{sf_dfr}{- \pkg{sf} dataframe for which to determine the name of the active geometry column}
+\item{sf_dfr}{\itemize{
+\item \pkg{sf} dataframe for which to determine the name of the active geometry column
+}}
 }
 \value{
 vector of column names

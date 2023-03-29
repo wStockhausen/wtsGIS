@@ -16,24 +16,42 @@ gg_CreateBasemapLayers(
 )
 }
 \arguments{
-\item{layer.land}{- a \code{sf::sf} object representing land}
+\item{layer.land}{\itemize{
+\item a \code{sf::sf} object representing land
+}}
 
-\item{layer.bathym}{- a \code{sf::sf} object representing bathymetry}
+\item{layer.bathym}{\itemize{
+\item a \code{sf::sf} object representing bathymetry
+}}
 
-\item{final.crs}{- object representing the final (display) coordinate reference system (see details)}
+\item{final.crs}{\itemize{
+\item object representing the final (display) coordinate reference system (see details)
+}}
 
-\item{bbox}{- a bounding box (see details; default is for the EBS)}
+\item{bbox}{\itemize{
+\item a bounding box (see details; default is for the EBS)
+}}
 
-\item{colors.bg}{- background color (default is "white")}
+\item{colors.bg}{\itemize{
+\item background color (default is "white")
+}}
 
-\item{colors.land}{- color for land (default is "grey85")}
+\item{colors.land}{\itemize{
+\item color for land (default is "grey85")
+}}
 
-\item{colors.bathym}{- color for the bathymetry (default is "darkblue")}
+\item{colors.bathym}{\itemize{
+\item color for the bathymetry (default is "darkblue")
+}}
 
-\item{alpha.bathym}{- transparency for the bathymetry (default is 1)}
+\item{alpha.bathym}{\itemize{
+\item transparency for the bathymetry (default is 1)
+}}
 }
 \value{
-- basemap layer based on the \pkg{ggplot2} package
+\itemize{
+\item basemap layer based on the \pkg{ggplot2} package
+}
 }
 \description{
 This function creates a basemap layer for maps based on the \pkg{ggplot2} package.

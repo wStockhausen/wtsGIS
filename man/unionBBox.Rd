@@ -7,9 +7,13 @@
 unionBBox(bbx1 = NULL, bbx2 = NULL)
 }
 \arguments{
-\item{bbx1}{- original bounding box}
+\item{bbx1}{\itemize{
+\item original bounding box
+}}
 
-\item{bbx2}{- updating bounding box}
+\item{bbx2}{\itemize{
+\item updating bounding box
+}}
 }
 \value{
 resulting bounding box as an sf::bbox object

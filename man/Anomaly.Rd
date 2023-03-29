@@ -7,12 +7,12 @@
 Anomaly(x, baseline = seq_along(x), ...)
 }
 \arguments{
-\item{x}{numeric vector}
+\item{x}{: numeric vector}
 
-\item{baseline}{logical or numerical vector used for subsetting x before
+\item{baseline}{: logical or numerical vector used for subsetting x before
 computing the mean}
 
-\item{...}{other arguments passed to \code{\link{mean}} such as `na.rm`}
+\item{...}{other arguments passed to \code{\link{mean}} such as \code{na.rm}}
 }
 \value{
 A numeric vector of the same length as x with each value's distance to the
@@ -22,9 +22,10 @@ mean.
 Saves keystrokes for computing anomalies.
 }
 \examples{
-# Zonal temperature anomaly
-library(data.table)
-temperature[, .(lon = lon, air.z = Anomaly(air)), by = .(lat, lev)]
+##--not run
+##Zonal temperature anomaly
+#library(data.table)
+#temperature[, .(lon = lon, air.z = Anomaly(air)), by = .(lat, lev)]
 
 }
 \seealso{

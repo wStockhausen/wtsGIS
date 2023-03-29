@@ -15,10 +15,10 @@ Angle(x, y)
 \item{x, y, }{x and y directions of the vector}
 }
 \value{
-`Mag`: A numeric vector the same length as each element of ...
+\code{Mag}: A numeric vector the same length as each element of ...
 that is \eqn{\sqrt(x^2 + y^2 + ...)}.
-`Angle`: A numeric vector of the same length as x and y that is
-`atan2(y, x)*180/pi`.
+\code{Angle}: A numeric vector of the same length as x and y that is
+\code{atan2(y, x)*180/pi}.
 }
 \description{
 Computes the magnitude of a vector of any dimension. Or angle (in degrees)
@@ -34,7 +34,7 @@ Angle(10, 10)
 Mag(10, 10, 10, 10)
 Mag(list(10, 10, 10, 10))
 
-# There's no vector recicling!
+# There's no vector recycling!
 \dontrun{
 Mag(1, 1:2)
 }

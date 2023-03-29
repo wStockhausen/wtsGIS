@@ -7,13 +7,21 @@
 createSFC_points(x, y, crs = sf::NA_crs_, wrapDateline = FALSE)
 }
 \arguments{
-\item{x}{- vector of x coordinates}
+\item{x}{\itemize{
+\item vector of x coordinates
+}}
 
-\item{y}{- vector of y coordinates}
+\item{y}{\itemize{
+\item vector of y coordinates
+}}
 
-\item{crs}{- coordinate reference system (convertible to an sf crs by \code{\link{get_crs}})}
+\item{crs}{\itemize{
+\item coordinate reference system (convertible to an sf crs by \code{\link{get_crs}})
+}}
 
-\item{wrapDateline}{- flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes}
+\item{wrapDateline}{\itemize{
+\item flag (T/F) to use 0 to 360 rather than -180 to 180 range for longitudes
+}}
 }
 \value{
 an object of class sfc_POINT

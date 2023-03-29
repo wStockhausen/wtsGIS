@@ -17,26 +17,46 @@ tmap_CreateBasemap(
 )
 }
 \arguments{
-\item{layer.land}{- a \code{sf::sf} object representing land}
+\item{layer.land}{\itemize{
+\item a \code{sf::sf} object representing land
+}}
 
-\item{layer.bathym}{- a \code{sf::sf} object representing bathymetry}
+\item{layer.bathym}{\itemize{
+\item a \code{sf::sf} object representing bathymetry
+}}
 
-\item{final.crs}{- representation of final (display) coordinate reference system (see details)}
+\item{final.crs}{\itemize{
+\item representation of final (display) coordinate reference system (see details)
+}}
 
-\item{bbox}{- a bounding box (see details)}
+\item{bbox}{\itemize{
+\item a bounding box (see details)
+}}
 
-\item{colors.bg}{- background color}
+\item{colors.bg}{\itemize{
+\item background color
+}}
 
-\item{colors.land}{- color for land}
+\item{colors.land}{\itemize{
+\item color for land
+}}
 
-\item{colors.bathym}{- color for the bathymetry}
+\item{colors.bathym}{\itemize{
+\item color for the bathymetry
+}}
 
-\item{alpha.bathym}{- transparency for the bathymetry}
+\item{alpha.bathym}{\itemize{
+\item transparency for the bathymetry
+}}
 
-\item{points.size}{- size of points, in map units}
+\item{points.size}{\itemize{
+\item size of points, in map units
+}}
 }
 \value{
-- basemap layer based on the tmap package
+\itemize{
+\item basemap layer based on the tmap package
+}
 }
 \description{
 This function creates a basemap layer for maps based on the tmap package.

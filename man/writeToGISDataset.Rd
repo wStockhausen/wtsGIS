@@ -14,17 +14,29 @@ writeToGISDataset(
 )
 }
 \arguments{
-\item{obj}{- a geospatial object to convert to GIS dataset}
+\item{obj}{\itemize{
+\item a geospatial object to convert to GIS dataset
+}}
 
-\item{driver}{- name of dataset driver (run \code{sf::st_drivers()} to see installed drivers )}
+\item{driver}{\itemize{
+\item name of dataset driver (run \code{sf::st_drivers()} to see installed drivers )
+}}
 
-\item{dsn}{- dsn for output (folder or file, depending on output)}
+\item{dsn}{\itemize{
+\item dsn for output (folder or file, depending on output)
+}}
 
-\item{delete_dsn}{- flag to delete the dsn before writing}
+\item{delete_dsn}{\itemize{
+\item flag to delete the dsn before writing
+}}
 
-\item{layer}{- name of layer written to (assuming dsn has layers), or NULL}
+\item{layer}{\itemize{
+\item name of layer written to (assuming dsn has layers), or NULL
+}}
 
-\item{delete_layer}{- flag to delete the layer before writing}
+\item{delete_layer}{\itemize{
+\item flag to delete the layer before writing
+}}
 }
 \value{
 an invisible NULL.

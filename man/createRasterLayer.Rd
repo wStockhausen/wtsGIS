@@ -17,26 +17,46 @@ createRasterLayer(
 )
 }
 \arguments{
-\item{dfr}{- spatial dataframe with data to rasterize}
+\item{dfr}{\itemize{
+\item spatial dataframe with data to rasterize
+}}
 
-\item{col}{- name of column in dataframe to rasterize}
+\item{col}{\itemize{
+\item name of column in dataframe to rasterize
+}}
 
-\item{bbox}{- \code{sf}-style bounding box}
+\item{bbox}{\itemize{
+\item \code{sf}-style bounding box
+}}
 
-\item{nx}{- number of cells in y direction}
+\item{nx}{\itemize{
+\item number of cells in y direction
+}}
 
-\item{ny}{- number of cells in y direction}
+\item{ny}{\itemize{
+\item number of cells in y direction
+}}
 
-\item{strCRS}{- string representation of CRS in PROJ4 format (default yields long/lat in WGS84)}
+\item{strCRS}{\itemize{
+\item string representation of CRS in PROJ4 format (default yields long/lat in WGS84)
+}}
 
-\item{linear}{- flag passed to \code{akima::interp}}
+\item{linear}{\itemize{
+\item flag passed to \code{akima::interp}
+}}
 
-\item{extrap}{- flag passed to \code{akima::interp}}
+\item{extrap}{\itemize{
+\item flag passed to \code{akima::interp}
+}}
 
-\item{duplicate}{- string passed to \code{akima::interp}}
+\item{duplicate}{\itemize{
+\item string passed to \code{akima::interp}
+}}
 }
 \value{
-- \pkg{raster} raster layer
+\itemize{
+\item \pkg{raster} raster layer
+}
 }
 \description{
 This function creates a \pkg{raster} spatial raster layer from a dataframe and a bounding box.

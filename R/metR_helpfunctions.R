@@ -1,5 +1,21 @@
-# nocov start
-
+#'
+#' @title Convert from data.frame to matrix
+#'
+#' @description Function to convert from data.frame to matrix.
+#'
+#' @param data : dataframe to convert
+#' @param formula : formula with rows ~ columns
+#' @param value.var : column to use as values of matrix
+#' @param fill : value to use for empty cells
+#' @param ... : ignored
+#'
+#' @return matrix.
+#'
+#' @details Uses \pkg{data.table} functionality to convert dataframe to matrix.
+#'
+#' @importFrom data.table as.data.table
+#' @noRd
+#'
 .tidy2matrix <- function(data, formula, value.var, fill = NULL, ...) {
     row.vars <- all.vars(formula[[2]])
     col.vars <- all.vars(formula[[3]])
@@ -75,6 +91,7 @@ ggname <- function(prefix, grob) {
 }
 
 
+#' @import grid
 width_cm <- function(x) {
     if (grid::is.grob(x)) {
         grid::convertWidth(grid::grobWidth(x), "cm", TRUE)
@@ -86,6 +103,8 @@ width_cm <- function(x) {
         stop("Unknown input")
     }
 }
+
+#' @import grid
 height_cm <- function(x) {
     if (grid::is.grob(x)) {
         grid::convertHeight(grid::grobHeight(x), "cm", TRUE)
@@ -113,10 +132,14 @@ message_wrap <- function(...) {
 
 # Interleave (or zip) multiple units into one vector
 interleave <- function(...) UseMethod("interleave")
+#' @importFrom grid unit.c
+#' @importFrom plyr llply
 #' @export
 interleave.unit <- function(...) {
     do.call("grid::unit.c", do.call("interleave.default", plyr::llply(list(...), as.list)))
 }
+
+#' @importFrom plyr llply laply
 #' @export
 interleave.default <- function(...) {
     vectors <- list(...)
@@ -145,6 +168,7 @@ matched_aes <- function(layer, guide, defaults) {
     setdiff(matched, names(layer$aes_params))
 }
 
+#' @importFrom ggplot2 standardise_aes_names
 rename_aes <- function(x) {
     names(x) <- ggplot2::standardise_aes_names(names(x))
     duplicated_names <- names(x)[duplicated(names(x))]
@@ -158,7 +182,7 @@ rename_aes <- function(x) {
 }
 
 #' @importFrom stats line runif var
-#' @importFrom utils head
+#' @importFrom utils globalVariables
 if(getRversion() >= "2.15.1") {
     utils::globalVariables(
         c("as", "dep.names", "ecdf", "equal", "fft", "hasArg", "id",
@@ -178,6 +202,7 @@ if(getRversion() >= "2.15.1") {
 }
 
 
+#' @import data.table
 .is.regular_grid <- function(x, y) {
     data <- data.table::data.table(x = x, y = y)
     nx <- data[, data.table::uniqueN(x), by = y]$V1
@@ -228,6 +253,7 @@ checkListSameLengh <- function(x, names = "x") {
     return(paste0(names, " must have the same length"))
 }
 
+#' @importFrom checkmate makeAssertionFunction
 assertListSameLength <- checkmate::makeAssertionFunction(checkListSameLengh)
 
 # fast_equal = inline::cxxfunction(signature(x = 'numeric', y = 'numeric'), '
@@ -251,6 +277,7 @@ checkSameLength <- function(x) {
     return(TRUE)
 }
 
+#' @importFrom checkmate makeAssertionFunction
 assertSameLength <- checkmate::makeAssertionFunction(checkSameLength)
 
 checkDateish <- function(x, ...) {
@@ -261,9 +288,11 @@ checkDateish <- function(x, ...) {
     checkDate(x, ...)
 }
 
+#' @importFrom checkmate makeAssertionFunction
 assertDateish <- checkmate::makeAssertionFunction(checkDateish)
 
 
+#' @importFrom RCurl url.exists
 checkURLFile <- function(x) {
     access <- unname(file.access(x, 4) == 0 | RCurl::url.exists(x))
 
@@ -273,6 +302,7 @@ checkURLFile <- function(x) {
     return(access)
 }
 
+#' @importFrom checkmate makeAssertionFunction
 assertURLFile <- checkmate::makeAssertionFunction(checkURLFile)
 
 
@@ -298,6 +328,7 @@ check_packages <- function(packages, fun) {
 a <- 6371000
 
 
+#' @importFrom data.table data.table
 smooth2d <- function(x, y, value, kx = 1, ky = 1) {
     data <- data.table::data.table(x, y, value)
     # browser()
@@ -319,6 +350,7 @@ smooth2d <- function(x, y, value, kx = 1, ky = 1) {
 }
 
 
+#' @importFrom data.table data.table
 downsample <- function(x, y, value, byx = 1, byy = 1, fill = mean) {
     data <- data.table::data.table(x, y, value)
     # browser()
