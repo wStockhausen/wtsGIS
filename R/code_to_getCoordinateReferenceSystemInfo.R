@@ -34,7 +34,7 @@ get_crs <- function(x) {
 	} else if (inherits(x, "CRS")) {
 	    return(sf::st_crs(attr(x, "projargs")));
 	} else if (inherits(x, "Spatial")) {
-	    return(sf::st_crs(sp::proj4string(x)));
+	    return(sf::st_crs(slot(x,"proj4string")));
 	} else if (suppressWarnings(is.na(x))) {
 		return(sf::st_crs());
 	} else if (!is.numeric(x) && !is.character(x)) {

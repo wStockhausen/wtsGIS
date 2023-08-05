@@ -28,6 +28,6 @@ should be convertible to an sf::crs object via \code{get_crs(toCRS)}.
 if \code{layer} is a \code{sf::bbox} object, the bbox is transformed using
 \code{transformBBox}.
 
-If \code{layer} is an object of class Spatial, then \code{toCRS}
+#--If \code{layer} is an object of class Spatial, then \code{toCRS}
 should be convertible to an sp::CRS object via \code{get_spCRS(toCRS)} .
 }

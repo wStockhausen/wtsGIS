@@ -4,7 +4,7 @@
 #' @description This function creates a basemap layer for maps based on the tmap package.
 #'
 #' @details The basemap contains a land layer (polygons) and a bathymetry layer (lines).
-#' Uses \code{\link{getPackagedLayer}} or \code{wtsUtilities::readShapefile} to create the
+#' Uses [getPackagedLayer()] or [readShapefile()] to create the
 #' land and bathymetric layers. If \code{bbox} is NULL, then the
 #' bounding box for the land layer is used as the bounding box for the basemap.
 #'
@@ -21,13 +21,15 @@
 #' @return - basemap layer based on the tmap package
 #'
 #' @details The final coordinate reference system (\code{final.crs}) can be any object that
-#' can be converted to a \code{sf::crs} object using \code{get_crs}.
+#' can be converted to a [sf::st_crs()] object using [get_crs()].
 #'
 #' The bounding box (\code{bbox}) can be any object that can be converted
-#' to a \code{sf::bbox} using \code{\link{getBBox}}.
+#' to a \code{sf::bbox} using [getBBox()].
 #'
 #' @import magrittr
 #' @import tmap
+#'
+#' @md
 #'
 #' @export
 #'

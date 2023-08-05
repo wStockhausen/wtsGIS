@@ -15,7 +15,7 @@
 #' @details Wrapper for functions \code{sf::st_write} for objects of class 'sf' or 'sfc' or
 #' \code{rgdal::writeOGR} for objects of class Spatial.
 #'
-#' @importFrom rgdal writeOGR
+#' #--former importFrom rgdal writeOGR
 #' @importFrom sf st_write
 #'
 #' @export
@@ -27,20 +27,22 @@ writeToGISDataset<-function(
                           delete_dsn=FALSE,
                           layer=NULL,
                           delete_layer=TRUE){
-  if (any(inherits(obj,c("sf","sfc")))){
+    if (!any(inherits(obj,c("sf","sfc")))){
+        obj = sf::st_as_sf(obj);
+    }
     sf::st_write(obj,
                  dsn=dsn,
                  layer=layer,
                  driver=driver,
                  delete_dsn=delete_dsn,
                  delete_layer=delete_layer);
-  } else {
-    rgdal::writeOGR(obj,
-                    dsn=dsn,
-                    layer=layer,
-                    driver=driver,
-                    delete_dsn=delete_dsn,
-                    delete_layer=delete_layer);
-  }
+  # } else {
+  #   rgdal::writeOGR(obj,
+  #                   dsn=dsn,
+  #                   layer=layer,
+  #                   driver=driver,
+  #                   delete_dsn=delete_dsn,
+  #                   delete_layer=delete_layer);
+  # }
   return(invisible(NULL));
 }

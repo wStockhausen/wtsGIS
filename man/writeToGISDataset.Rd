@@ -47,4 +47,6 @@ Function to write a geospatial object (e.g., an sf dataset) to a GIS dataset.
 \details{
 Wrapper for functions \code{sf::st_write} for objects of class 'sf' or 'sfc' or
 \code{rgdal::writeOGR} for objects of class Spatial.
+
+#--former importFrom rgdal writeOGR
 }
